@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{shared/layout :: page('Sản phẩm đã mua', ~{::section})}">
+<body>
+<section><h1>Sản phẩm đã mua</h1>
+    <div class="table-wrap">
+        <table>
+            <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Số lượng đã mua</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td colspan="2">Bạn chưa có sản phẩm đã mua.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

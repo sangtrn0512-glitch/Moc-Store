@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" th:fragment="page(title, content)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title} + ' | Mộc Store'">Mộc Store</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="topbar">MỘC STORE · Đồ trang trí nhà cửa · Bình dị mà tinh tế</div>
+<header><a class="brand" href="/">mộc<span>STORE</span></a>
+    <nav class="main-nav"><a href="/">Trang chủ</a><a href="/product/list">Sản phẩm</a><a href="/order/list">Đơn
+        hàng</a></nav>
+    <div class="header-actions"><a href="/auth/login">Tài khoản</a><a class="bag" href="/cart/index">Giỏ hàng ↗</a>
+    </div>
+</header>
+<div class="shell">
+    <main>
+        <th:block th:replace="${content}"></th:block>
+    </main>
+</div>
+<footer>
+    <div><a class="brand" href="/">mộc<span>STORE</span></a>
+        <p>Đồ trang trí dành cho những góc nhà bạn yêu.</p></div>
+    <div><strong>Tài khoản</strong><a href="/account/sign-up">Đăng ký</a><a href="/account/edit-profile">Thông tin cá
+        nhân</a><a href="/account/change-password">Đổi mật khẩu</a></div>
+    <div><strong>Mua sắm</strong><a href="/product/list">Khám phá sản phẩm</a><a href="/order/list">Đơn hàng của tôi</a><a
+            href="/order/my-product-list">Sản phẩm đã mua</a></div>
+</footer>
+<div class="copyright">© Mộc Store</div>
+</body>
+</html>

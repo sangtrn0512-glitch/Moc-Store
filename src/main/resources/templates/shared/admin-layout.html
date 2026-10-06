@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org" th:fragment="page(title, content)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title} + ' | Mộc Store'">Mộc Store</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header><a class="brand" href="/">mộc<span>QUẢN TRỊ</span></a><a href="/">Về cửa hàng ↗</a></header>
+<div class="admin-shell">
+    <nav class="admin-nav"><a href="/admin/category/index">Loại hàng</a><a href="/admin/product/index">Sản phẩm</a><a
+            href="/admin/account/index">Khách hàng</a><a href="/admin/order/index">Đơn hàng</a><a
+            href="/admin/report/revenue">Doanh thu</a><a href="/admin/report/vip">Khách hàng VIP</a></nav>
+    <main>
+        <th:block th:replace="${content}"></th:block>
+    </main>
+</div>
+</body>
+</html>

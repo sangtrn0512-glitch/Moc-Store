@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{shared/layout :: page('Đồ trang trí nhà cửa', ~{::section})}">
+<body>
+<section>
+    <div class="hero">
+        <div class="hero-copy"><span class="eyebrow">MỘC · ĐỒ TRANG TRÍ NHÀ CỬA</span>
+            <h1>Thêm chút mộc,<br>nhà thêm ấm.</h1>
+            <p>Bình gốm, ánh đèn và những món đồ nhỏ giúp góc nhà trở thành nơi bạn muốn trở về.</p><a class="button"
+                                                                                                       href="/product/list">Khám
+                phá sản phẩm ↗</a></div>
+        <div class="decor-hero"><img src="/images/home-decor.svg" alt="Góc nhà với bình gốm, nến thơm và đồng hồ gỗ"
+                                     width="600" height="550"></div>
+    </div>
+    <div class="section-heading">
+        <div><span class="eyebrow">CHỌN CHO GÓC NHÀ CỦA BẠN</span>
+            <h2>Những điều nhỏ, cảm hứng lớn</h2></div>
+    </div>
+    <div class="cards"><a class="collection" href="/product/list"><span>01 / GỐM & CÂY XANH</span>
+        <h2>Một góc bình yên</h2>
+        <p>Bình hoa và chậu cây cho không gian thêm sức sống.</p><b>Khám phá ↗</b></a><a class="collection"
+                                                                                         href="/product/list"><span>02 / ĐÈN & NẾN THƠM</span>
+        <h2>Thắp lên sự ấm áp</h2>
+        <p>Ánh sáng dịu và hương thơm cho những buổi tối thư thái.</p><b>Khám phá ↗</b></a><a class="collection"
+                                                                                              href="/product/list"><span>03 / TRANH & ĐỒNG HỒ</span>
+        <h2>Dấu ấn của riêng bạn</h2>
+        <p>Điểm nhấn tinh tế dành cho những bức tường quen thuộc.</p><b>Khám phá ↗</b></a></div>
+    <div class="section-heading">
+        <div><span class="eyebrow">GỢI Ý TỪ MỘC</span>
+            <h2>Chạm vào cảm hứng sống</h2></div>
+        <a href="/product/list">Xem tất cả ↗</a></div>
+    <div class="product-grid">
+        <article class="product-card">
+            <div class="product-image"><img src="/images/vase.svg" alt="Bình gốm An Nhiên" width="320" height="320"
+                                            loading="lazy"></div>
+            <span class="product-category">Bình hoa</span>
+            <h3>Bình gốm An Nhiên</h3>
+            <p class="price">289.000 ₫</p></article>
+        <article class="product-card">
+            <div class="product-image"><img src="/images/lamp.svg" alt="Đèn bàn Mây" width="320" height="320"
+                                            loading="lazy"></div>
+            <span class="product-category">Đèn trang trí</span>
+            <h3>Đèn bàn Mây</h3>
+            <p class="price">649.000 ₫</p></article>
+        <article class="product-card">
+            <div class="product-image"><img src="/images/frame.svg" alt="Tranh Lá Xanh" width="320" height="320"
+                                            loading="lazy"></div>
+            <span class="product-category">Tranh treo tường</span>
+            <h3>Tranh Lá Xanh</h3>
+            <p class="price">359.000 ₫</p></article>
+        <article class="product-card">
+            <div class="product-image"><img src="/images/candle.svg" alt="Nến thơm Gỗ Ấm" width="320" height="320"
+                                            loading="lazy"></div>
+            <span class="product-category">Nến thơm</span>
+            <h3>Nến thơm Gỗ Ấm</h3>
+            <p class="price">189.000 ₫</p></article>
+    </div>
+    <div class="brand-note"><span class="eyebrow">MỘC VÀ NGÔI NHÀ CỦA BẠN</span>
+        <h2>Nhà đẹp từ những điều giản dị.</h2>
+        <p>Một chiếc bình, một ngọn nến, một góc nhỏ mang dấu ấn riêng.</p></div>
+</section>
+</body>
+</html>
