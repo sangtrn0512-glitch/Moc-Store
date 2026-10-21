@@ -15,42 +15,66 @@ on:
           - smoke
         default: all
 
+permissions:
+  contents: read
+
 jobs:
   test:
-    runs-on: ubuntu-latest
+    name: ${{ matrix.suite }} tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [junit, selenium]
 
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Set up JDK 21
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: "21"
+          java-version: "17"
           distribution: temurin
           cache: maven
 
-      - name: Run all tests
-        if: github.event_name != 'workflow_dispatch' || inputs.suite == 'all'
-        run: mvn -B test
+      - name: Run selected tests
+        shell: bash
+        env:
+          TEST_KIND: ${{ matrix.suite }}
+          TEST_SELECTION: ${{ inputs.suite || 'all' }}
+        run: |
+          args=(-B -ntp -Dheadless=true)
+          if [[ "$TEST_KIND" == "selenium" ]]; then
+            args+=(-Pui)
+            if [[ "$TEST_SELECTION" == "smoke" ]]; then
+              args+=("-Dgroups=ui & smoke")
+            else
+              args+=(-Dgroups=ui)
+            fi
+          elif [[ "$TEST_SELECTION" == "smoke" ]]; then
+            args+=(-Dgroups=smoke)
+          fi
+          bash ./mvnw "${args[@]}" test
 
-      - name: Run smoke tests
-        if: github.event_name == 'workflow_dispatch' && inputs.suite == 'smoke'
-        run: mvn -B test -Dgroups=smoke
-
-      - name: Generate HTML test report
+      - name: Check Extent Report was generated
         if: always()
-        continue-on-error: true
-        run: >
-          mvn -B
-          org.apache.maven.plugins:maven-surefire-report-plugin:3.6.0:report-only
+        shell: bash
+        env:
+          REPORT_DIRECTORY: target/extent-report/${{ matrix.suite }}
+        run: test -s "$REPORT_DIRECTORY/index.html"
 
       - name: Upload test reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: java-test-reports
+          name: java-test-reports-${{ matrix.suite }}-${{ github.run_number }}
           path: |
             target/surefire-reports/
+            target/selenium-reports/
+            target/selenium-evidence/
             target/reports/
+            target/extent-report/
           if-no-files-found: warn
+          retention-days: 14

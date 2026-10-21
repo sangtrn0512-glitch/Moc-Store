@@ -1,0 +1,459 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< org.example:ASM_java5 >------------------------
+[INFO] Building ASM_java5 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ ASM_java5 ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 34 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ ASM_java5 ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ ASM_java5 ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ ASM_java5 ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ ASM_java5 ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.example.asm_java5.AsmJava5ApplicationTests
+04:42:29.288 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.asm_java5.AsmJava5ApplicationTests]: AsmJava5ApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+04:42:29.459 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.example.asm_java5.AsmJava5Application for test class org.example.asm_java5.AsmJava5ApplicationTests
+04:42:29.629 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [org.example.asm_java5.AsmJava5ApplicationTests]: AsmJava5ApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+04:42:29.631 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration org.example.asm_java5.AsmJava5Application for test class org.example.asm_java5.AsmJava5ApplicationTests
+04:42:29.756 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-22T04:42:30.273+07:00  INFO 24760 --- [ASM_java5] [           main] o.e.asm_java5.AsmJava5ApplicationTests   : Starting AsmJava5ApplicationTests using Java 17.0.20.1 with PID 24760 (started by sang in C:\Users\sang\Desktop\ASM_java5)
+2026-10-22T04:42:30.275+07:00  INFO 24760 --- [ASM_java5] [           main] o.e.asm_java5.AsmJava5ApplicationTests   : The following 1 profile is active: "test"
+2026-10-22T04:42:31.449+07:00  INFO 24760 --- [ASM_java5] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-22T04:42:31.582+07:00  INFO 24760 --- [ASM_java5] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 5 JPA repository interfaces.
+2026-10-22T04:42:32.281+07:00  INFO 24760 --- [ASM_java5] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-22T04:42:32.405+07:00  INFO 24760 --- [ASM_java5] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-22T04:42:33.187+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-22T04:42:33.234+07:00  INFO 24760 --- [ASM_java5] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-22T04:42:33.603+07:00  INFO 24760 --- [ASM_java5] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:moc_test user=SA
+2026-10-22T04:42:33.606+07:00  INFO 24760 --- [ASM_java5] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-22T04:42:33.642+07:00  WARN 24760 --- [ASM_java5] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-10-22T04:42:33.675+07:00  INFO 24760 --- [ASM_java5] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:moc_test]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: MOC_TEST/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-22T04:42:35.062+07:00  INFO 24760 --- [ASM_java5] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-22T04:42:35.145+07:00  INFO 24760 --- [ASM_java5] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T04:42:35.312+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-22T04:42:37.181+07:00  INFO 24760 --- [ASM_java5] [           main] o.e.asm_java5.AsmJava5ApplicationTests   : Started AsmJava5ApplicationTests in 7.443 seconds (process running for 9.092)
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.686 s -- in org.example.asm_java5.AsmJava5ApplicationTests
+[INFO] Running org.example.asm_java5.controller.ControllerTests
+2026-10-22T04:42:38.403+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:38.404+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:38.410+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:38.831+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:38.831+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:38.832+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:38.903+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:38.903+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:38.904+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:38.985+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:38.986+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:38.986+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:39.040+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:39.041+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:39.042+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:39.080+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:39.081+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:39.081+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:39.235+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:39.235+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:39.236+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:39.363+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:39.363+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:39.364+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:39.379+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:39.379+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:39.379+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:39.512+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:39.513+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:39.513+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:39.540+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:39.541+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:39.541+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:39.553+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:39.555+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:39.555+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:39.569+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:39.569+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:39.569+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:39.581+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:39.582+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:39.582+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:39.698+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:39.698+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:39.699+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:39.713+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:39.713+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:39.713+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.995 s -- in org.example.asm_java5.controller.ControllerTests
+[INFO] Running org.example.asm_java5.integration.AccountIntegrationTests
+2026-10-22T04:42:39.740+07:00  INFO 24760 --- [ASM_java5] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.asm_java5.integration.AccountIntegrationTests]: AccountIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-22T04:42:39.781+07:00  INFO 24760 --- [ASM_java5] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.asm_java5.AsmJava5Application for test class org.example.asm_java5.integration.AccountIntegrationTests
+2026-10-22T04:42:39.783+07:00  INFO 24760 --- [ASM_java5] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.asm_java5.integration.AccountIntegrationTests]: AccountIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-22T04:42:39.784+07:00  INFO 24760 --- [ASM_java5] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.asm_java5.support.DatabaseTestSupport]: DatabaseTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-22T04:42:39.786+07:00  INFO 24760 --- [ASM_java5] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.asm_java5.AsmJava5Application for test class org.example.asm_java5.integration.AccountIntegrationTests
+2026-10-22T04:42:39.797+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-22T04:42:39.866+07:00  INFO 24760 --- [ASM_java5] [           main] o.e.a.i.AccountIntegrationTests          : Starting AccountIntegrationTests using Java 17.0.20.1 with PID 24760 (started by sang in C:\Users\sang\Desktop\ASM_java5)
+2026-10-22T04:42:39.867+07:00  INFO 24760 --- [ASM_java5] [           main] o.e.a.i.AccountIntegrationTests          : The following 1 profile is active: "test"
+2026-10-22T04:42:40.212+07:00  INFO 24760 --- [ASM_java5] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-22T04:42:40.240+07:00  INFO 24760 --- [ASM_java5] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 5 JPA repository interfaces.
+2026-10-22T04:42:40.586+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-22T04:42:40.613+07:00  INFO 24760 --- [ASM_java5] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-22T04:42:40.614+07:00  INFO 24760 --- [ASM_java5] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-22T04:42:40.722+07:00  INFO 24760 --- [ASM_java5] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 852 ms
+2026-10-22T04:42:40.865+07:00  INFO 24760 --- [ASM_java5] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-22T04:42:40.912+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-22T04:42:40.915+07:00  INFO 24760 --- [ASM_java5] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-10-22T04:42:40.916+07:00  INFO 24760 --- [ASM_java5] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:moc_test user=SA
+2026-10-22T04:42:40.917+07:00  INFO 24760 --- [ASM_java5] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-10-22T04:42:40.917+07:00  WARN 24760 --- [ASM_java5] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-10-22T04:42:40.918+07:00  INFO 24760 --- [ASM_java5] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:moc_test]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: MOC_TEST/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-22T04:42:41.008+07:00  INFO 24760 --- [ASM_java5] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-22T04:42:41.024+07:00  INFO 24760 --- [ASM_java5] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T04:42:41.333+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 4098 (http) with context path '/'
+2026-10-22T04:42:41.339+07:00  INFO 24760 --- [ASM_java5] [           main] o.e.a.i.AccountIntegrationTests          : Started AccountIntegrationTests in 1.543 seconds (process running for 13.251)
+2026-10-22T04:42:42.079+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:42.079+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:42.080+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:42.969+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:42.969+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:42.970+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:43.656+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:43.657+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:43.658+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:44.015+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:44.015+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:44.016+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:44.253+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:44.254+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:44.255+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:44.499+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:44.500+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:44.502+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-10-22T04:42:44.797+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:44.797+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:44.798+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:45.031+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:45.031+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:45.033+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.450 s -- in org.example.asm_java5.integration.AccountIntegrationTests
+[INFO] Running org.example.asm_java5.integration.AdminIntegrationTests
+2026-10-22T04:42:45.191+07:00  INFO 24760 --- [ASM_java5] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.asm_java5.integration.AdminIntegrationTests]: AdminIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-22T04:42:45.197+07:00  INFO 24760 --- [ASM_java5] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.asm_java5.AsmJava5Application for test class org.example.asm_java5.integration.AdminIntegrationTests
+2026-10-22T04:42:45.200+07:00  INFO 24760 --- [ASM_java5] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.asm_java5.integration.AdminIntegrationTests]: AdminIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-22T04:42:45.203+07:00  INFO 24760 --- [ASM_java5] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.asm_java5.support.DatabaseTestSupport]: DatabaseTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-22T04:42:45.208+07:00  INFO 24760 --- [ASM_java5] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.asm_java5.AsmJava5Application for test class org.example.asm_java5.integration.AdminIntegrationTests
+2026-10-22T04:42:45.423+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:45.423+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:45.423+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:45.726+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:45.726+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:45.726+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:46.013+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:46.013+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:46.015+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:46.022+07:00  WARN 24760 --- [ASM_java5] [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2026-10-22T04:42:46.023+07:00  WARN 24760 --- [ASM_java5] [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+2026-10-22T04:42:46.234+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:46.234+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:46.235+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:46.502+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:46.502+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:46.502+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:46.875+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:46.875+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:46.876+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:47.089+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:47.089+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:47.090+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:47.328+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:47.329+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:47.330+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:47.589+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:47.590+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:47.590+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:47.809+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:47.809+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:47.810+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:48.017+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:48.017+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:48.018+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:48.232+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:48.232+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:48.232+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:48.440+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:48.440+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:48.441+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:48.649+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:48.650+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:48.650+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:48.865+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:48.865+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:48.866+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:49.269+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:49.269+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:49.270+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:49.495+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:49.495+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:49.496+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:49.714+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:49.714+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:49.715+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:49.925+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:49.925+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:49.926+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:50.141+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:50.141+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:50.142+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:50.373+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:50.373+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:50.374+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:50.603+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:50.603+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:50.603+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:50.824+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:50.825+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:50.826+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:51.046+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:51.046+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:51.047+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:51.254+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:51.255+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:51.255+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:51.469+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:51.469+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:51.469+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:51.670+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:51.671+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:51.672+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:51.866+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:51.866+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:51.866+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:52.069+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:52.069+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:52.070+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:52.260+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:52.260+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:52.261+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:52.480+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:52.480+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:52.481+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:52.693+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:52.693+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:52.694+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:52.893+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:52.893+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:52.894+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:53.148+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:53.148+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:53.149+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:53.371+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:53.371+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:53.372+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:53.577+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:53.577+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:53.578+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:53.796+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:53.796+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:53.797+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+[INFO] Tests run: 37, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.619 s -- in org.example.asm_java5.integration.AdminIntegrationTests
+[INFO] Running org.example.asm_java5.integration.BusinessIntegrationTests
+2026-10-22T04:42:53.812+07:00  INFO 24760 --- [ASM_java5] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.asm_java5.integration.BusinessIntegrationTests]: BusinessIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-22T04:42:53.816+07:00  INFO 24760 --- [ASM_java5] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.asm_java5.AsmJava5Application for test class org.example.asm_java5.integration.BusinessIntegrationTests
+2026-10-22T04:42:53.818+07:00  INFO 24760 --- [ASM_java5] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.asm_java5.integration.BusinessIntegrationTests]: BusinessIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-22T04:42:53.818+07:00  INFO 24760 --- [ASM_java5] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.asm_java5.support.DatabaseTestSupport]: DatabaseTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-22T04:42:53.819+07:00  INFO 24760 --- [ASM_java5] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.asm_java5.AsmJava5Application for test class org.example.asm_java5.integration.BusinessIntegrationTests
+2026-10-22T04:42:54.026+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:54.026+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:54.027+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:54.257+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:54.257+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:54.259+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:54.482+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:54.482+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:54.483+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:54.714+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:54.714+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:54.715+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:54.931+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:54.931+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:54.932+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:55.151+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:55.151+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:55.151+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:55.375+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:55.375+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:55.376+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:55.597+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:55.597+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:55.597+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:55.826+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:55.826+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:55.827+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:56.050+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:56.050+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:56.051+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:56.269+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:56.269+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:56.270+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:56.480+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:56.481+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:56.482+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:57.388+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:57.389+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:57.389+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:57.599+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:57.599+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:57.600+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:57.817+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:57.818+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:57.818+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:42:58.050+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:58.050+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:58.051+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:58.279+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:58.279+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:58.281+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2026-10-22T04:42:58.493+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:58.493+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:58.494+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:58.705+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:58.705+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:58.706+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-22T04:42:58.918+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:42:58.918+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:42:58.919+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.202 s -- in org.example.asm_java5.integration.BusinessIntegrationTests
+[INFO] Running org.example.asm_java5.integration.UploadIntegrationTests
+2026-10-22T04:42:59.018+07:00  INFO 24760 --- [ASM_java5] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.asm_java5.integration.UploadIntegrationTests]: UploadIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-22T04:42:59.028+07:00  INFO 24760 --- [ASM_java5] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.asm_java5.AsmJava5Application for test class org.example.asm_java5.integration.UploadIntegrationTests
+2026-10-22T04:42:59.029+07:00  INFO 24760 --- [ASM_java5] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.asm_java5.integration.UploadIntegrationTests]: UploadIntegrationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-22T04:42:59.029+07:00  INFO 24760 --- [ASM_java5] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [org.example.asm_java5.support.DatabaseTestSupport]: DatabaseTestSupport does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-22T04:42:59.033+07:00  INFO 24760 --- [ASM_java5] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration org.example.asm_java5.AsmJava5Application for test class org.example.asm_java5.integration.UploadIntegrationTests
+2026-10-22T04:42:59.038+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-22T04:42:59.082+07:00  INFO 24760 --- [ASM_java5] [           main] o.e.a.i.UploadIntegrationTests           : Starting UploadIntegrationTests using Java 17.0.20.1 with PID 24760 (started by sang in C:\Users\sang\Desktop\ASM_java5)
+2026-10-22T04:42:59.082+07:00  INFO 24760 --- [ASM_java5] [           main] o.e.a.i.UploadIntegrationTests           : The following 1 profile is active: "test"
+2026-10-22T04:42:59.314+07:00  INFO 24760 --- [ASM_java5] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-22T04:42:59.334+07:00  INFO 24760 --- [ASM_java5] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 5 JPA repository interfaces.
+2026-10-22T04:42:59.427+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 0 (http)
+2026-10-22T04:42:59.429+07:00  INFO 24760 --- [ASM_java5] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-22T04:42:59.429+07:00  INFO 24760 --- [ASM_java5] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-22T04:42:59.488+07:00  INFO 24760 --- [ASM_java5] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 404 ms
+2026-10-22T04:42:59.536+07:00  INFO 24760 --- [ASM_java5] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-22T04:42:59.565+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-22T04:42:59.566+07:00  INFO 24760 --- [ASM_java5] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-10-22T04:42:59.567+07:00  INFO 24760 --- [ASM_java5] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:moc_test user=SA
+2026-10-22T04:42:59.567+07:00  INFO 24760 --- [ASM_java5] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-10-22T04:42:59.567+07:00  WARN 24760 --- [ASM_java5] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-10-22T04:42:59.567+07:00  INFO 24760 --- [ASM_java5] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:moc_test]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: MOC_TEST/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-22T04:42:59.668+07:00  INFO 24760 --- [ASM_java5] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-22T04:42:59.678+07:00  INFO 24760 --- [ASM_java5] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-22T04:42:59.848+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 4703 (http) with context path '/'
+2026-10-22T04:42:59.849+07:00  INFO 24760 --- [ASM_java5] [           main] o.e.a.i.UploadIntegrationTests           : Started UploadIntegrationTests in 0.812 seconds (process running for 31.761)
+2026-10-22T04:43:00.041+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:43:00.042+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:43:00.042+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2026-10-22T04:43:00.287+07:00  INFO 24760 --- [ASM_java5] [           main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring TestDispatcherServlet ''
+2026-10-22T04:43:00.287+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-22T04:43:00.288+07:00  INFO 24760 --- [ASM_java5] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.284 s -- in org.example.asm_java5.integration.UploadIntegrationTests
+[INFO] Running org.example.asm_java5.service.AccountServiceTests
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.866 s -- in org.example.asm_java5.service.AccountServiceTests
+[INFO] Running org.example.asm_java5.service.AuthServiceTests
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.693 s -- in org.example.asm_java5.service.AuthServiceTests
+[INFO] Running org.example.asm_java5.service.CartServiceTests
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 s -- in org.example.asm_java5.service.CartServiceTests
+[INFO] Running org.example.asm_java5.service.FileServiceTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.339 s -- in org.example.asm_java5.service.FileServiceTests
+[INFO] Running org.example.asm_java5.service.OrderServiceTests
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.555 s -- in org.example.asm_java5.service.OrderServiceTests
+[INFO] Running org.example.asm_java5.service.ProductServiceTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in org.example.asm_java5.service.ProductServiceTests
+[INFO] Running org.example.asm_java5.service.ProductValidationTests
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.040 s -- in org.example.asm_java5.service.ProductValidationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 164, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  37.674 s
+[INFO] Finished at: 2026-10-22T04:43:04+07:00
+[INFO] ------------------------------------------------------------------------

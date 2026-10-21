@@ -2,14 +2,17 @@ package org.example.asm_java5.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+
 import java.math.BigDecimal;
 import org.example.asm_java5.entity.Product;
-import org.example.asm_java5.repository.ProductRepository;
 import org.example.asm_java5.repository.OrderDetailRepository;
+import org.example.asm_java5.repository.ProductRepository;
+import org.example.asm_java5.support.CaseIds;
 import org.junit.jupiter.api.Test;
 
 class ProductServiceTests {
   @Test
+  @CaseIds("TC-088")
   void cannotDeleteProductWithOrderHistory() {
     ProductRepository products = mock(ProductRepository.class);
     OrderDetailRepository details = mock(OrderDetailRepository.class);
@@ -21,6 +24,7 @@ class ProductServiceTests {
   }
 
   @Test
+  @CaseIds("TC-087")
   void deletesProductWithoutOrders() {
     ProductRepository products = mock(ProductRepository.class);
     OrderDetailRepository details = mock(OrderDetailRepository.class);
@@ -30,6 +34,7 @@ class ProductServiceTests {
   }
 
   @Test
+  @CaseIds("TC-081")
   void rejectsNegativePriceBeforeDatabaseWrite() {
     ProductRepository products = mock(ProductRepository.class);
     Product product = new Product();
