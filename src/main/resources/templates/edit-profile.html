@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{shared/layout :: page('Thông tin tài khoản', ~{::section})}">
-<body>
-<section><h1>Thông tin tài khoản</h1>
-    <form><label>Họ tên<input placeholder="Nhập thông tin" type="text"></label><label>Email<input
-            placeholder="Nhập thông tin" type="text"></label>
-        <button type="button" disabled>Lưu thay đổi</button>
-    </form>
-</section>
-</body>
-</html>
+<!DOCTYPE html><html lang="vi" xmlns:th="http://www.thymeleaf.org" th:replace="~{shared/layout :: page('Thông tin cá nhân', ~{::section})}"><body><section><h1>Thông tin cá nhân</h1><img th:if="${account.photo != null}" th:src="@{/uploads/{file}(file=${account.photo})}" alt="Ảnh đại diện" width="100" height="100"><p class="admin-error" th:if="${error}" th:text="${error}" role="alert"></p><p class="admin-success" th:if="${success}" th:text="${success}" role="status"></p><form method="post" action="/account/edit-profile">
+<input type="hidden" name="csrf" th:value="${session.csrf}"><label for="fullName">Họ tên</label><input id="fullName" name="fullName" type="text" required th:value="${account.fullName}" maxlength="100"><label for="email">Email</label><input id="email" name="email" type="email" required th:value="${account.email}" maxlength="255"><p>Đổi email sẽ cần kích hoạt lại tài khoản.</p><button>Lưu hồ sơ</button></form><form method="post" action="/account/photo" enctype="multipart/form-data">
+<input type="hidden" name="csrf" th:value="${session.csrf}"><label for="photo">Ảnh đại diện (PNG/JPG, tối đa 2 MB)</label><input id="photo" type="file" name="photo" accept="image/png,image/jpeg" required><button>Tải ảnh</button></form></section></body></html>

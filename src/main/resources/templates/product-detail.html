@@ -2,7 +2,88 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org"
       th:replace="~{shared/layout :: page('Chi tiết sản phẩm', ~{::section})}">
 <body>
-<section><h1>Chi tiết sản phẩm</h1>
-    <p>Không tìm thấy sản phẩm.</p></section>
+<section>
+    <!-- NÚT QUAY LẠI DANH SÁCH SẢN PHẨM -->
+    <a th:href="@{/product/list}">← Danh sách sản phẩm</a>
+
+    <!-- THÔNG TIN CHI TIẾT SẢN PHẨM -->
+    <h1 th:text="${product.name}"></h1>
+
+    <div class="product-image">
+        <img th:if="${product.image != null and product.image != ''}"
+             th:src="@{/images/{file}(file=${product.image})}"
+             th:alt="${product.name}"
+             width="320"
+             height="320">
+
+        <p th:if="${product.image == null or product.image == ''}">
+            Chưa có ảnh
+        </p>
+    </div>
+
+    <p>
+        Loại hàng:
+        <span th:text="${product.category.name}"></span>
+    </p>
+
+    <p>
+        Giá:
+        <strong th:text="${product.price} + ' ₫'"></strong>
+    </p>
+
+    <p>
+        Giảm giá:
+        <span th:text="${product.discount} + '%'"></span>
+    </p>
+
+    <p th:text="${product.available} ? 'Đang bán' : 'Ngừng bán'"></p>
+
+    <!-- THÔNG BÁO SAU KHI THÊM VÀO GIỎ -->
+    <p th:if="${success}" th:text="${success}" role="status"></p>
+    <p th:if="${error}" th:text="${error}" role="alert"></p>
+
+    <!-- NÚT THÊM SẢN PHẨM VÀO GIỎ HÀNG -->
+    <form th:if="${product.available}"
+          th:action="@{/cart/add/{id}(id=${product.id})}"
+          method="post">
+<input type="hidden" name="csrf" th:value="${session.csrf}">
+        <button type="submit">Thêm vào giỏ</button>
+    </form>
+
+    <!-- PHẦN SẢN PHẨM CÙNG LOẠI -->
+    <h2>Sản phẩm cùng loại</h2>
+
+    <p th:if="${#lists.isEmpty(relatedProducts)}">
+        Chưa có sản phẩm cùng loại.
+    </p>
+
+    <!-- DANH SÁCH CÁC THẺ SẢN PHẨM CÙNG LOẠI -->
+    <div class="product-grid">
+        <article class="product-card"
+                 th:each="item : ${relatedProducts}">
+
+            <div class="product-image">
+                <img th:if="${item.image != null and item.image != ''}"
+                     th:src="@{/images/{file}(file=${item.image})}"
+                     th:alt="${item.name}"
+                     width="320"
+                     height="320"
+                     loading="lazy">
+
+                <p th:if="${item.image == null or item.image == ''}">
+                    Chưa có ảnh
+                </p>
+            </div>
+
+            <h3>
+                <a th:href="@{/product/detail/{id}(id=${item.id})}"
+                   th:text="${item.name}">
+                </a>
+            </h3>
+
+            <p class="price" th:text="${item.price} + ' ₫'"></p>
+        </article>
+    </div>
+</section>
 </body>
 </html>

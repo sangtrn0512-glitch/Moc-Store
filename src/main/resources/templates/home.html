@@ -4,60 +4,108 @@
 <body>
 <section>
     <div class="hero">
-        <div class="hero-copy"><span class="eyebrow">MỘC · ĐỒ TRANG TRÍ NHÀ CỬA</span>
-            <h1>Thêm chút mộc,<br>nhà thêm ấm.</h1>
+        <div class="hero-copy"><span class="eyebrow">KHÔNG GIAN NHỎ · CẢM HỨNG LỚN</span>
+            <h1>Thêm chút mộc,<br><em>nhà thêm ấm.</em></h1>
             <p>Bình gốm, ánh đèn và những món đồ nhỏ giúp góc nhà trở thành nơi bạn muốn trở về.</p><a class="button"
                                                                                                        href="/product/list">Khám
-                phá sản phẩm ↗</a></div>
+                phá sản phẩm <span aria-hidden="true">↗</span></a><span class="hero-bottom">GIẢN DỊ TRONG TỪNG CHI TIẾT</span></div>
         <div class="decor-hero"><img src="/images/home-decor.svg" alt="Góc nhà với bình gốm, nến thơm và đồng hồ gỗ"
-                                     width="600" height="550"></div>
+                                     width="600" height="550" fetchpriority="high"><div class="hero-caption"><span>THE EVERYDAY COLLECTION</span><span>MỘC STORE</span></div></div>
+    </div>
+    <div class="values-strip">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20 4C8 3 3 9 7 16c7 4 13-1 13-12Z"/><path d="m4 21 12-12"/></svg><span>Cảm hứng từ thiên nhiên</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="m12 3 9 5v9l-9 5-9-5V8l9-5Z"/><path d="m3 8 9 5 9-5M12 13v9M7 5l9 5"/></svg><span>Chăm chút từng chi tiết</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20 5c-3-3-7-1-8 1-1-2-5-4-8-1-5 5 8 15 8 15S25 10 20 5Z"/></svg><span>Đồ nhỏ, niềm vui lớn</span></div>
     </div>
     <div class="section-heading">
         <div><span class="eyebrow">CHỌN CHO GÓC NHÀ CỦA BẠN</span>
             <h2>Những điều nhỏ, cảm hứng lớn</h2></div>
     </div>
-    <div class="cards"><a class="collection" href="/product/list"><span>01 / GỐM & CÂY XANH</span>
+    <div class="cards" id="collections"><a class="collection" href="/product/list?keyword=Bình"><span class="eyebrow">01 / GỐM & CÂY XANH</span>
         <h2>Một góc bình yên</h2>
-        <p>Bình hoa và chậu cây cho không gian thêm sức sống.</p><b>Khám phá ↗</b></a><a class="collection"
-                                                                                         href="/product/list"><span>02 / ĐÈN & NẾN THƠM</span>
+        <p>Bình hoa và chậu cây cho không gian thêm sức sống.</p><b>Khám phá ↗</b><img src="/images/vase.svg" alt="" width="200" height="200" loading="lazy"></a><a class="collection"
+                                                                                         href="/product/list?keyword=Đèn"><span class="eyebrow">02 / ĐÈN & NẾN THƠM</span>
         <h2>Thắp lên sự ấm áp</h2>
-        <p>Ánh sáng dịu và hương thơm cho những buổi tối thư thái.</p><b>Khám phá ↗</b></a><a class="collection"
-                                                                                              href="/product/list"><span>03 / TRANH & ĐỒNG HỒ</span>
+        <p>Ánh sáng dịu và hương thơm cho những buổi tối thư thái.</p><b>Khám phá ↗</b><img src="/images/lamp.svg" alt="" width="200" height="200" loading="lazy"></a><a class="collection"
+                                                                                              href="/product/list?keyword=Tranh"><span class="eyebrow">03 / TRANH & ĐỒNG HỒ</span>
         <h2>Dấu ấn của riêng bạn</h2>
-        <p>Điểm nhấn tinh tế dành cho những bức tường quen thuộc.</p><b>Khám phá ↗</b></a></div>
+        <p>Điểm nhấn tinh tế dành cho những bức tường quen thuộc.</p><b>Khám phá ↗</b><img src="/images/frame.svg" alt="" width="200" height="200" loading="lazy"></a></div>
     <div class="section-heading">
-        <div><span class="eyebrow">GỢI Ý TỪ MỘC</span>
-            <h2>Chạm vào cảm hứng sống</h2></div>
-        <a href="/product/list">Xem tất cả ↗</a></div>
-    <div class="product-grid">
-        <article class="product-card">
-            <div class="product-image"><img src="/images/vase.svg" alt="Bình gốm An Nhiên" width="320" height="320"
-                                            loading="lazy"></div>
-            <span class="product-category">Bình hoa</span>
-            <h3>Bình gốm An Nhiên</h3>
-            <p class="price">289.000 ₫</p></article>
-        <article class="product-card">
-            <div class="product-image"><img src="/images/lamp.svg" alt="Đèn bàn Mây" width="320" height="320"
-                                            loading="lazy"></div>
-            <span class="product-category">Đèn trang trí</span>
-            <h3>Đèn bàn Mây</h3>
-            <p class="price">649.000 ₫</p></article>
-        <article class="product-card">
-            <div class="product-image"><img src="/images/frame.svg" alt="Tranh Lá Xanh" width="320" height="320"
-                                            loading="lazy"></div>
-            <span class="product-category">Tranh treo tường</span>
-            <h3>Tranh Lá Xanh</h3>
-            <p class="price">359.000 ₫</p></article>
-        <article class="product-card">
-            <div class="product-image"><img src="/images/candle.svg" alt="Nến thơm Gỗ Ấm" width="320" height="320"
-                                            loading="lazy"></div>
-            <span class="product-category">Nến thơm</span>
-            <h3>Nến thơm Gỗ Ấm</h3>
-            <p class="price">189.000 ₫</p></article>
+        <div>
+            <span class="eyebrow">MỚI ĐẾN MỘC</span>
+            <h2>Sản phẩm mới</h2>
+        </div>
+        <a class="text-link" th:href="@{/product/list}">Xem tất cả <span aria-hidden="true">↗</span></a>
     </div>
-    <div class="brand-note"><span class="eyebrow">MỘC VÀ NGÔI NHÀ CỦA BẠN</span>
+    <p th:if="${#lists.isEmpty(newProducts)}">Chưa có sản phẩm mới.</p>
+    <div class="product-grid">
+        <article class="product-card" th:each="product : ${newProducts}">
+            <div class="product-image">
+                <img th:if="${product.image != null and product.image != ''}"
+                     th:src="@{/images/{file}(file=${product.image})}"
+                     th:alt="${product.name}"
+                     width="320" height="320" loading="lazy">
+                <p th:if="${product.image == null or product.image == ''}">Chưa có ảnh</p>
+            </div>
+            <h3>
+                <a th:href="@{/product/detail/{id}(id=${product.id})}"
+                   th:text="${product.name}"></a>
+            </h3>
+            <p class="price" th:text="${product.price} + ' ₫'"></p>
+        </article>
+    </div>
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">ƯU ĐÃI CHO GÓC NHÀ</span>
+            <h2>Sản phẩm giảm giá</h2>
+        </div>
+        <a class="text-link" th:href="@{/product/list}">Xem tất cả <span aria-hidden="true">↗</span></a>
+    </div>
+    <p th:if="${#lists.isEmpty(discountProducts)}">Hiện chưa có sản phẩm giảm giá.</p>
+    <div class="product-grid">
+        <article class="product-card" th:each="product : ${discountProducts}">
+            <div class="product-image">
+                <img th:if="${product.image != null and product.image != ''}"
+                     th:src="@{/images/{file}(file=${product.image})}"
+                     th:alt="${product.name}"
+                     width="320" height="320" loading="lazy">
+                <p th:if="${product.image == null or product.image == ''}">Chưa có ảnh</p>
+            </div>
+            <h3>
+                <a th:href="@{/product/detail/{id}(id=${product.id})}"
+                   th:text="${product.name}"></a>
+            </h3>
+            <p class="price" th:text="${product.price} + ' ₫'"></p>
+            <p th:text="'Giảm ' + ${product.discount} + '%'"></p>
+        </article>
+    </div>
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">ĐƯỢC KHÁCH HÀNG YÊU THÍCH</span>
+            <h2>Sản phẩm bán chạy</h2>
+        </div>
+        <a class="text-link" th:href="@{/product/list}">Xem tất cả <span aria-hidden="true">↗</span></a>
+    </div>
+    <p th:if="${#lists.isEmpty(bestSellingProducts)}">Chưa có sản phẩm bán chạy.</p>
+    <div class="product-grid">
+        <article class="product-card" th:each="product : ${bestSellingProducts}">
+            <div class="product-image">
+                <img th:if="${product.image != null and product.image != ''}"
+                     th:src="@{/images/{file}(file=${product.image})}"
+                     th:alt="${product.name}"
+                     width="320" height="320" loading="lazy">
+                <p th:if="${product.image == null or product.image == ''}">Chưa có ảnh</p>
+            </div>
+            <h3>
+                <a th:href="@{/product/detail/{id}(id=${product.id})}"
+                   th:text="${product.name}"></a>
+            </h3>
+            <p class="price" th:text="${product.price} + ' ₫'"></p>
+        </article>
+    </div>
+    <div class="brand-note" id="our-story"><div class="brand-note-art"><img src="/images/plant.svg" alt="Chậu cây xanh trong không gian Mộc" width="320" height="320" loading="lazy"></div><div class="brand-note-copy"><span class="eyebrow">MỘC VÀ NGÔI NHÀ CỦA BẠN</span>
         <h2>Nhà đẹp từ những điều giản dị.</h2>
-        <p>Một chiếc bình, một ngọn nến, một góc nhỏ mang dấu ấn riêng.</p></div>
+        <p>Không cần thay đổi cả căn phòng. Đôi khi, chỉ một chiếc bình, một ngọn nến hay một chút xanh cũng đủ để thấy yêu nhà hơn.</p><a class="text-link" href="/product/list">Tìm cảm hứng cho nhà bạn <span aria-hidden="true">↗</span></a></div></div>
 </section>
 </body>
 </html>

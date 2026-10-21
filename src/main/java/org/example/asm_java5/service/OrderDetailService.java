@@ -1,15 +1,31 @@
 package org.example.asm_java5.service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import org.example.asm_java5.entity.OrderDetail;
+import org.example.asm_java5.repository.OrderDetailRepository;
+import org.springframework.stereotype.Service;
 
-public interface OrderDetailService {
-  List<OrderDetail> findAll();
+@Service
+public class OrderDetailService {
+  private final OrderDetailRepository repository;
 
-  Optional<OrderDetail> findById(Long id);
+  public OrderDetailService(OrderDetailRepository repository) {
+    this.repository = repository;
+  }
 
-  OrderDetail save(OrderDetail entity);
+  public List<OrderDetail> findAll() {
+    return repository.findAll();
+  }
 
-  void deleteById(Long id);
+  public Optional<OrderDetail> findById(Long id) {
+    return repository.findById(id);
+  }
+
+  public OrderDetail save(OrderDetail detail) {
+    return repository.save(detail);
+  }
+
+  public void deleteById(Long id) {
+    repository.deleteById(id);
+  }
 }

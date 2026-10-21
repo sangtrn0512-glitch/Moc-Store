@@ -2,47 +2,50 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org" th:replace="~{shared/layout :: page('Sản phẩm', ~{::section})}">
 <body>
 <section>
+    <!-- PHẦN GIỚI THIỆU ĐẦU TRANG -->
     <div class="catalog-intro"><span class="eyebrow">MỘC · HOME DECOR</span>
         <h1>Chọn một chút xinh cho nhà</h1>
         <p>Khám phá đồ trang trí cho phòng khách, góc làm việc và không gian nghỉ ngơi.</p></div>
+    <!-- THANH LỌC SẢN PHẨM THEO DANH MỤC -->
+    <form method="get" action="/product/list" class="catalog-search">
+      <label for="keyword">Tên sản phẩm<input id="keyword" name="keyword" th:value="${keyword}" placeholder="Tìm sản phẩm"></label>
+      <label for="categoryId">Loại hàng<select id="categoryId" name="categoryId"><option value="">Tất cả</option><option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}" th:selected="${categoryId == c.id}"></option></select></label>
+      <label for="minPrice">Giá từ<input id="minPrice" name="minPrice" type="number" min="0" th:value="${minPrice}"></label>
+      <label for="maxPrice">Đến<input id="maxPrice" name="maxPrice" type="number" min="0" th:value="${maxPrice}"></label>
+      <label for="sort">Sắp xếp<select id="sort" name="sort"><option value="id">Mặc định</option><option value="name" th:selected="${sort == 'name'}">Tên</option><option value="price" th:selected="${sort == 'price'}">Giá tăng</option><option value="priceDesc" th:selected="${sort == 'priceDesc'}">Giá giảm</option></select></label><button>Lọc</button><a href="/product/list">Bỏ lọc</a>
+    </form>
+    <p th:if="${error}" th:text="${error}" role="alert"></p><p th:text="'Có ' + ${count} + ' sản phẩm'"></p>
+    <!-- DANH SÁCH CÁC THẺ SẢN PHẨM -->
     <div class="product-grid">
-        <article class="product-card">
-            <div class="product-image"><img src="/images/vase.svg" alt="Bình gốm An Nhiên" width="320" height="320"
-                                            loading="lazy"></div>
-            <span class="product-category">Bình hoa</span>
-            <h3>Bình gốm An Nhiên</h3>
-            <p class="price">289.000 ₫</p></article>
-        <article class="product-card">
-            <div class="product-image"><img src="/images/lamp.svg" alt="Đèn bàn Mây" width="320" height="320"
-                                            loading="lazy"></div>
-            <span class="product-category">Đèn trang trí</span>
-            <h3>Đèn bàn Mây</h3>
-            <p class="price">649.000 ₫</p></article>
-        <article class="product-card">
-            <div class="product-image"><img src="/images/frame.svg" alt="Tranh Lá Xanh" width="320" height="320"
-                                            loading="lazy"></div>
-            <span class="product-category">Tranh treo tường</span>
-            <h3>Tranh Lá Xanh</h3>
-            <p class="price">359.000 ₫</p></article>
-        <article class="product-card">
-            <div class="product-image"><img src="/images/candle.svg" alt="Nến thơm Gỗ Ấm" width="320" height="320"
-                                            loading="lazy"></div>
-            <span class="product-category">Nến thơm</span>
-            <h3>Nến thơm Gỗ Ấm</h3>
-            <p class="price">189.000 ₫</p></article>
-        <article class="product-card">
-            <div class="product-image"><img src="/images/clock.svg" alt="Đồng hồ Tròn Mộc" width="320" height="320"
-                                            loading="lazy"></div>
-            <span class="product-category">Đồng hồ</span>
-            <h3>Đồng hồ Tròn Mộc</h3>
-            <p class="price">429.000 ₫</p></article>
-        <article class="product-card">
-            <div class="product-image"><img src="/images/plant.svg" alt="Chậu cây Góc Nhỏ" width="320" height="320"
-                                            loading="lazy"></div>
-            <span class="product-category">Chậu cây</span>
-            <h3>Chậu cây Góc Nhỏ</h3>
-            <p class="price">219.000 ₫</p></article>
+        <article class="product-card"
+                 th:each="product : ${products}">
+
+            <div class="product-image">
+                <img th:if="${product.image != null and product.image != ''}"
+                     th:src="@{/images/{file}(file=${product.image})}"
+                     th:alt="${product.name}"
+                     width="320"
+                     height="320"
+                     loading="lazy">
+
+                <p th:if="${product.image == null or product.image == ''}">
+                    Chưa có ảnh
+                </p>
+            </div>
+
+            <span class="product-category"
+                  th:text="${product.category.name}"></span>
+
+            <h3>
+                <a th:href="@{/product/detail/{id}(id=${product.id})}"
+                   th:text="${product.name}">
+                </a>
+            </h3>
+
+            <p class="price"
+               th:text="${product.price} + ' ₫'"></p>
+        </article>
     </div>
-</section>
+<p th:if="${#lists.isEmpty(products)}">Không tìm thấy sản phẩm.</p><nav aria-label="Phân trang"><a th:if="${page > 0}" th:href="@{/product/list(page=${page - 1},keyword=${keyword},sort=${sort},categoryId=${categoryId},minPrice=${minPrice},maxPrice=${maxPrice})}">← Trước</a> <span th:text="'Trang ' + ${page + 1} + ' / ' + ${pages}"></span> <a th:if="${page + 1 < pages}" th:href="@{/product/list(page=${page + 1},keyword=${keyword},sort=${sort},categoryId=${categoryId},minPrice=${minPrice},maxPrice=${maxPrice})}">Sau →</a></nav></section>
 </body>
 </html>

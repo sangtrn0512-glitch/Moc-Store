@@ -1,8 +1,1 @@
-<!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{shared/layout :: page('Chi tiết đơn hàng', ~{::section})}">
-<body>
-<section><h1>Chi tiết đơn hàng</h1>
-    <p>Không tìm thấy đơn hàng.</p></section>
-</body>
-</html>
+<!DOCTYPE html><html lang="vi" xmlns:th="http://www.thymeleaf.org" th:replace="~{shared/layout :: page('Chi tiết đơn hàng', ~{::section})}"><body><section><h1>Chi tiết đơn hàng</h1><p class="admin-error" th:if="${error}" th:text="${error}" role="alert"></p><p class="admin-success" th:if="${success}" th:text="${success}" role="status"></p><p th:text="'Mã đơn: ' + ${order.id}"></p><p th:text="'Địa chỉ: ' + ${order.address}"></p><p th:text="'Điện thoại: ' + ${order.phone}"></p><p th:text="'Trạng thái: ' + ${order.status}"></p><div class="table-wrap"><table><thead><tr><th>Sản phẩm</th><th>Đơn giá lúc mua</th><th>Số lượng</th><th>Thành tiền</th></tr></thead><tbody><tr th:each="item : ${details}"><td th:text="${item.product.name}"></td><td th:text="${item.price}"></td><td th:text="${item.quantity}"></td><td th:text="${item.price * item.quantity}"></td></tr></tbody></table></div><p th:text="'Tổng tiền: ' + ${total} + ' ₫'"></p><a href="/order/list">Về danh sách đơn</a></section></body></html>

@@ -2,21 +2,92 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org"
       th:replace="~{shared/admin-layout :: page('Quản lý sản phẩm', ~{::section})}">
 <body>
-<section><h1>Quản lý sản phẩm</h1>
+<section class="product-admin">
+    <h1>Quản lý sản phẩm</h1><div th:replace="~{shared/paging :: controls}"></div>
+    <p class="admin-error" th:if="${error}" th:text="${error}" role="alert">
+    </p>
+    <p class="admin-success" th:if="${success}" th:text="${success}" role="status">
+    </p>
+    <form class="product-editor" enctype="multipart/form-data" th:object="${product}"
+          th:action="${product.id == null} ? @{/admin/product/create} : @{/admin/product/update}" method="post">
+<input type="hidden" name="csrf" th:value="${session.csrf}">
+        <h2 th:text="${product.id == null} ? 'Thêm sản phẩm' : 'Sửa sản phẩm'">Sản phẩm</h2>
+        <input type="hidden" th:field="*{id}">
+<label for="imageFile">Tải ảnh PNG/JPG (tối đa 2 MB)</label><input id="imageFile" type="file" name="imageFile" accept="image/png,image/jpeg">
+        <div class="editor-grid">
+            <label for="product-name">Tên sản phẩm<input id="product-name" th:field="*{name}" required maxlength="200">
+            </label>
+            <label for="product-price">Giá (đồng)<input id="product-price" th:field="*{price}" type="number" min="0"
+                                                        max="99999999999999999.99" step="0.01" required>
+            </label>
+            <label for="categoryId">Loại hàng<select id="categoryId" name="categoryId" required>
+                <option value="">Chọn loại hàng</option>
+                <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"
+                        th:selected="${product.category != null and product.category.id == category.id}">
+                </option>
+            </select>
+            </label>
+            <label for="product-discount">Giảm giá (%)<input id="product-discount" th:field="*{discount}" type="number"
+                                                             min="0" max="100" step="0.01" required>
+            </label>
+            <label for="product-image">Tên file ảnh<input id="product-image" th:field="*{image}" maxlength="255"
+                                                          placeholder="Ví dụ: vase.svg" aria-describedby="image-hint">
+                <small id="image-hint">Dùng tên file có sẵn trong static/images; có thể để trống.</small>
+            </label>
+            <label class="checkbox-label" for="product-available">
+                <input id="product-available" th:field="*{available}" type="checkbox"> Đang bán</label>
+        </div>
+        <button type="submit" th:text="${product.id == null} ? 'Thêm sản phẩm' : 'Lưu thay đổi'">
+        </button>
+        <a class="admin-link" th:href="@{/admin/product/index}">Làm mới / Hủy sửa</a>
+    </form>
+    <p th:text="'Tổng số: ' + ${#lists.size(products)} + ' sản phẩm'">
+    </p>
     <div class="table-wrap">
         <table>
             <thead>
             <tr>
-                <th>Mã SP</th>
+                <th>Mã</th>
+                <th>Ảnh</th>
                 <th>Tên sản phẩm</th>
                 <th>Giá</th>
                 <th>Loại</th>
+                <th>Giảm giá</th>
+                <th>Trạng thái</th>
                 <th>Thao tác</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td colspan="5">Chưa có mục nào để hiển thị.</td>
+            <tr th:each="item : ${products}">
+                <td th:text="${item.id}">
+                </td>
+                <td>
+                    <img class="admin-thumb" th:if="${item.image != null and !#strings.isEmpty(item.image)}"
+                         th:src="@{/images/{file}(file=${item.image})}" th:alt="${item.name}" width="64" height="64"
+                         onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+                    <span th:hidden="${item.image != null and !#strings.isEmpty(item.image)}">Chưa có ảnh</span>
+                </td>
+                <td th:text="${item.name}">
+                </td>
+                <td th:text="${#numbers.formatDecimal(item.price, 1, 'POINT', 0, 'COMMA')} + ' ₫'">
+                </td>
+                <td th:text="${item.category != null ? item.category.name : 'Chưa phân loại'}">
+                </td>
+                <td th:text="${item.discount} + '%'">
+                </td>
+                <td th:text="${item.available} ? 'Đang bán' : 'Ngừng bán'">
+                </td>
+                <td>
+                    <a class="admin-link" th:href="@{/admin/product/edit/{id}(id=${item.id})}">Sửa</a>
+                    <form class="delete-product" th:action="@{/admin/product/delete/{id}(id=${item.id})}" method="post"
+                          onsubmit="return confirm('Bạn có chắc muốn xóa sản phẩm này?');">
+<input type="hidden" name="csrf" th:value="${session.csrf}">
+                        <button class="danger-button" type="submit">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(products)}">
+                <td colspan="8">Chưa có sản phẩm nào.</td>
             </tr>
             </tbody>
         </table>

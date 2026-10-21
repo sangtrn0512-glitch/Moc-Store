@@ -7,14 +7,16 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<header><a class="brand" href="/">mộc<span>QUẢN TRỊ</span></a><a href="/">Về cửa hàng ↗</a></header>
+<header><a class="brand" href="/">mộc<span>QUẢN TRỊ</span></a><a href="/">Về cửa hàng ↗</a><form class="inline-form" method="post" action="/auth/logout">
+<input type="hidden" name="csrf" th:value="${session.csrf}"><button>Đăng xuất</button></form></header>
 <div class="admin-shell">
-    <nav class="admin-nav"><a href="/admin/category/index">Loại hàng</a><a href="/admin/product/index">Sản phẩm</a><a
+    <nav class="admin-nav" aria-label="Quản trị cửa hàng"><a href="/admin/category/index">Loại hàng</a><a href="/admin/product/index">Sản phẩm</a><a
             href="/admin/account/index">Khách hàng</a><a href="/admin/order/index">Đơn hàng</a><a
             href="/admin/report/revenue">Doanh thu</a><a href="/admin/report/vip">Khách hàng VIP</a></nav>
     <main>
         <th:block th:replace="${content}"></th:block>
     </main>
 </div>
+<script src="/js/store.js" defer></script>
 </body>
 </html>

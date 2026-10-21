@@ -2,7 +2,31 @@
 <html lang="vi" xmlns:th="http://www.thymeleaf.org"
       th:replace="~{shared/admin-layout :: page('Quản lý loại hàng', ~{::section})}">
 <body>
-<section><h1>Quản lý loại hàng</h1>
+<section><h1>Quản lý loại hàng</h1><div th:replace="~{shared/paging :: controls}"></div>
+    <p th:if="${error}" th:text="${error}" role="alert"></p>
+    <p th:if="${success}" th:text="${success}" role="status"></p>
+    <form th:object="${category}"
+          th:action="${category.id == null}
+          ? @{/admin/category/create}
+          : @{/admin/category/update}"
+          method="post">
+<input type="hidden" name="csrf" th:value="${session.csrf}">
+
+        <input type="hidden" th:field="*{id}">
+
+        <label for="name">Tên loại hàng</label>
+        <input id="name"
+               th:field="*{name}"
+               type="text"
+               maxlength="100"
+               required>
+
+        <button type="submit"
+                th:text="${category.id == null} ? 'Thêm loại hàng' : 'Lưu thay đổi'">
+        </button>
+
+        <a href="/admin/category/index">Làm mới</a>
+    </form>
     <div class="table-wrap">
         <table>
             <thead>
@@ -13,8 +37,20 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td colspan="3">Chưa có mục nào để hiển thị.</td>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.id}"></td>
+                <td th:text="${category.name}"></td>
+                <td>
+                    <a th:href="@{/admin/category/edit/{id}(id=${category.id})}">
+                        Sửa
+                    </a>
+                    <form th:action="@{/admin/category/delete/{id}(id=${category.id})}"
+                          method="post"
+                          onsubmit="return confirm('Bạn có chắc muốn xóa loại hàng này?');">
+<input type="hidden" name="csrf" th:value="${session.csrf}">
+                        <button type="submit">Xóa</button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>

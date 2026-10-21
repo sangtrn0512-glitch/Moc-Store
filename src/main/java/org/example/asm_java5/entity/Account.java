@@ -1,6 +1,7 @@
 package org.example.asm_java5.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,4 +23,12 @@ public class Account {
   private boolean activated;
 
   private boolean admin;
+
+  private String resetToken;
+
+  private LocalDateTime resetExpiresAt;
+
+  private String activationToken;
+
+  private LocalDateTime activationExpiresAt;
 }

@@ -1,5 +1,29 @@
 package org.example.asm_java5.service;
 
-public interface MailService {
-  void send(String to, String subject, String body);
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
+@Service
+public class MailService {
+  private final JavaMailSender mailSender;
+
+  @Value("${spring.mail.username}")
+  private String senderEmail;
+
+  public MailService(JavaMailSender mailSender) {
+    this.mailSender = mailSender;
+  }
+
+  public void send(String to, String subject, String body) {
+    SimpleMailMessage message = new SimpleMailMessage();
+
+    message.setFrom(senderEmail);
+    message.setTo(to);
+    message.setSubject(subject);
+    message.setText(body);
+
+    mailSender.send(message);
+  }
 }

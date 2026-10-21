@@ -1,26 +1,3 @@
-<!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{shared/admin-layout :: page('Quản lý tài khoản', ~{::section})}">
-<body>
-<section><h1>Quản lý tài khoản</h1>
-    <div class="table-wrap">
-        <table>
-            <thead>
-            <tr>
-                <th>Tên đăng nhập</th>
-                <th>Họ tên</th>
-                <th>Email</th>
-                <th>Vai trò</th>
-                <th>Thao tác</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td colspan="5">Chưa có mục nào để hiển thị.</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-</body>
-</html>
+<!DOCTYPE html><html lang="vi" xmlns:th="http://www.thymeleaf.org" th:replace="~{shared/admin-layout :: page('Quản lý tài khoản', ~{::section})}"><body><section><h1>Quản lý tài khoản</h1><div th:replace="~{shared/paging :: controls}"></div><p class="admin-error" th:if="${error}" th:text="${error}" role="alert"></p><p class="admin-success" th:if="${success}" th:text="${success}" role="status"></p><form method="post" th:action="${editing == true} ? @{/admin/account/update} : @{/admin/account/create}">
+<input type="hidden" name="csrf" th:value="${session.csrf}"><label for="username">Tên đăng nhập</label><input id="username" name="username" type="text" required th:value="${account.username}" maxlength="50" th:readonly="${editing == true}"><label for="fullName">Họ tên</label><input id="fullName" name="fullName" type="text" required th:value="${account.fullName}" maxlength="100"><label for="email">Email</label><input id="email" name="email" type="email" required th:value="${account.email}" maxlength="255"><label for="password">Mật khẩu (để trống nếu giữ nguyên khi sửa)</label><input id="password" name="password" type="password" minlength="8"><label><input type="checkbox" name="activated" value="true" th:checked="${account.activated}"> Đã kích hoạt</label><label><input type="checkbox" name="admin" value="true" th:checked="${account.admin}"> Quản trị viên</label><button>Lưu tài khoản</button><a href="/admin/account/index">Làm mới</a></form><div class="table-wrap"><table><thead><tr><th>Tên đăng nhập</th><th>Họ tên</th><th>Email</th><th>Vai trò</th><th>Hoạt động</th><th></th></tr></thead><tbody><tr th:each="item : ${accounts}"><td th:text="${item.username}"></td><td th:text="${item.fullName}"></td><td th:text="${item.email}"></td><td th:text="${item.admin} ? 'Admin' : 'Khách'"></td><td th:text="${item.activated}"></td><td><a th:href="@{/admin/account/edit/{id}(id=${item.username})}">Sửa</a><form method="post" class="inline-form" th:action="@{/admin/account/delete/{id}(id=${item.username})}" onsubmit="return confirm('Xóa tài khoản này?')">
+<input type="hidden" name="csrf" th:value="${session.csrf}"><button>Xóa</button></form></td></tr></tbody></table></div></section></body></html>

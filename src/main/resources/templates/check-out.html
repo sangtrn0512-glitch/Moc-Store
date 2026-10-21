@@ -1,11 +1,2 @@
-<!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org" th:replace="~{shared/layout :: page('Đặt hàng', ~{::section})}">
-<body>
-<section><h1>Đặt hàng</h1>
-    <form><label>Địa chỉ nhận hàng<input placeholder="Nhập thông tin" type="text"></label><label>Số điện thoại<input
-            placeholder="Nhập thông tin" type="text"></label>
-        <button type="button" disabled>Đặt hàng</button>
-    </form>
-</section>
-</body>
-</html>
+<!DOCTYPE html><html lang="vi" xmlns:th="http://www.thymeleaf.org" th:replace="~{shared/layout :: page('Đặt hàng', ~{::section})}"><body><section><h1>Đặt hàng</h1><p class="admin-error" th:if="${error}" th:text="${error}" role="alert"></p><p class="admin-success" th:if="${success}" th:text="${success}" role="status"></p><p th:if="${#lists.isEmpty(items)}">Giỏ hàng đang trống.</p><div th:unless="${#lists.isEmpty(items)}"><p th:text="'Tổng tiền tham khảo: ' + ${total} + ' ₫'"></p><p>Giá và trạng thái sản phẩm được kiểm tra lại khi xác nhận.</p><form method="post" action="/order/checkout">
+<input type="hidden" name="csrf" th:value="${session.csrf}"><input type="hidden" name="checkoutKey" th:value="${session.checkoutKey}"><label for="address">Địa chỉ nhận hàng</label><input id="address" name="address" type="text" required maxlength="500"><label for="phone">Số điện thoại</label><input id="phone" name="phone" type="tel" required maxlength="20"><button>Xác nhận đặt hàng</button></form></div></section></body></html>

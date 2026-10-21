@@ -1,12 +1,2 @@
-<!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org" th:replace="~{shared/layout :: page('Đăng nhập', ~{::section})}">
-<body>
-<section><h1>Đăng nhập</h1>
-    <form><label>Tên đăng nhập<input placeholder="Nhập thông tin" type="text"></label><label>Mật khẩu<input
-            placeholder="Nhập thông tin" type="password"></label>
-        <button type="button" disabled>Đăng nhập</button>
-        <p><a href="/account/forgot-password">Quên mật khẩu?</a> · <a href="/account/sign-up">Tạo tài khoản</a></p>
-    </form>
-</section>
-</body>
-</html>
+<!DOCTYPE html><html lang="vi" xmlns:th="http://www.thymeleaf.org" th:replace="~{shared/layout :: page('Đăng nhập', ~{::section})}"><body><section><h1>Đăng nhập</h1><p class="admin-error" th:if="${error}" th:text="${error}" role="alert"></p><p class="admin-success" th:if="${success}" th:text="${success}" role="status"></p><form method="post" action="/auth/login">
+<input type="hidden" name="csrf" th:value="${session.csrf}"><label for="username">Tên đăng nhập</label><input id="username" name="username" type="text" required autocomplete="username"><label for="password">Mật khẩu</label><input id="password" name="password" type="password" required autocomplete="current-password"><button>Đăng nhập</button><p><a href="/account/sign-up">Đăng ký</a> · <a href="/account/forgot-password">Quên mật khẩu?</a></p></form></section></body></html>
