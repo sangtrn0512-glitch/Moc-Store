@@ -20,9 +20,11 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
   String url;
   private Path reportScreenshot;
 
+  // Trả ảnh chụp test để đính kèm báo cáo.
   @Override
   public Path screenshotForReport() { return reportScreenshot; }
 
+  // Mở trình duyệt mới và chuẩn bị URL ứng dụng trước mỗi test.
   @BeforeEach
   void browser() {
     reportScreenshot = null;
@@ -36,6 +38,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
   }
 
   @AfterEach
+  // Lưu ảnh, HTML làm minh chứng và đóng trình duyệt sau mỗi test.
   void evidenceAndClose(TestInfo info) throws Exception {
     if (driver == null) return;
     try {
@@ -52,6 +55,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
     }
   }
 
+  // Đăng nhập admin và mở trang quản lý danh mục.
   CategoryPage adminCategories() {
     new LoginPage(driver, url)
         .open()
@@ -60,6 +64,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
     return new CategoryPage(driver, url).open();
   }
 
+  // Kiểm tra đăng ký qua trình duyệt lưu tài khoản chưa kích hoạt và mật khẩu mã hóa.
   @Test
   @Tag("smoke")
   @CaseIds("TC-024")
@@ -79,6 +84,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
             eq("qa_new@example.invalid"), contains("Kích hoạt"), contains(a.getActivationToken()));
   }
 
+  // Kiểm tra trình duyệt báo lỗi khi đăng ký trùng tên đăng nhập.
   @Test
   @CaseIds("TC-026")
   void duplicateRegistrationRejectedInBrowser() {
@@ -92,6 +98,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
     verifyNoInteractions(mail);
   }
 
+  // Kiểm tra mở link kích hoạt rồi đăng nhập được tài khoản mới.
   @Test
   @CaseIds("TC-030")
   void activationLinkAllowsNewAccountLogin() {
@@ -106,6 +113,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
     assertFalse(driver.findElements(By.cssSelector("a[href='/account/edit-profile']")).isEmpty());
   }
 
+  // Kiểm tra user và admin đăng nhập được chuyển tới đúng trang theo quyền.
   @Test
   @Tag("smoke")
   @CaseIds("TC-046")
@@ -120,6 +128,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
     assertTrue(driver.findElement(By.tagName("h1")).getText().contains("sản phẩm"));
   }
 
+  // Kiểm tra trên trình duyệt: sai mật khẩu hoặc chưa kích hoạt đều không đăng nhập được.
   @Test
   @CaseIds("TC-047")
   void badPasswordAndInactiveAccountCannotLogin() {
@@ -132,6 +141,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
     assertTrue(driver.getCurrentUrl().endsWith("/auth/login"));
   }
 
+  // Kiểm tra trình duyệt quay lại trang yêu cầu ban đầu sau đăng nhập.
   @Test
   @CaseIds("TC-049")
   void loginReturnsToOriginalProtectedPage() {
@@ -140,6 +150,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
     assertTrue(driver.findElement(By.tagName("h1")).getText().contains("Đơn hàng"));
   }
 
+  // Kiểm tra thêm danh mục qua trình duyệt và thấy dữ liệu đã tạo.
   @Test
   @Tag("smoke")
   @CaseIds("TC-070")
@@ -156,6 +167,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
     assertEquals("Selenium QA mới", page.nameInForm());
   }
 
+  // Kiểm tra sửa danh mục qua trình duyệt.
   @Test
   @CaseIds("TC-072")
   void updateCategoryViaBrowser() {
@@ -168,6 +180,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
     assertEquals("Selenium QA sửa", categories.findById(c2.getId()).orElseThrow().getName());
   }
 
+  // Kiểm tra xóa danh mục chưa có sản phẩm qua trình duyệt.
   @Test
   @CaseIds("TC-075")
   void deleteEmptyCategoryViaBrowser() {
@@ -177,6 +190,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
     assertFalse(categories.existsById(c2.getId()));
   }
 
+  // Kiểm tra trình duyệt báo lỗi khi thêm trùng danh mục.
   @Test
   @CaseIds("TC-071")
   void duplicateCategoryRejectedViaBrowser() {
@@ -187,6 +201,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
     assertEquals(before, categories.count());
   }
 
+  // Kiểm tra trình duyệt chặn xóa danh mục đang có sản phẩm.
   @Test
   @CaseIds("TC-076")
   void cannotDeleteCategoryContainingProductsViaBrowser() {
@@ -197,6 +212,7 @@ class StoreSeleniumTests extends DatabaseTestSupport implements ScreenshotEviden
     assertEquals(2, products.count());
   }
 
+  // Kiểm tra mua hàng qua trình duyệt, hoàn tất đơn và thấy lịch sử cùng doanh thu đúng.
   @Test
   @CaseIds("TC-120")
   void purchaseThroughUiAppearsInHistoryAndReports() {

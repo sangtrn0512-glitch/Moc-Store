@@ -11,6 +11,7 @@ import org.example.asm_java5.support.CaseIds;
 import org.junit.jupiter.api.Test;
 
 class ProductServiceTests {
+  // Kiểm tra chặn xóa sản phẩm đã có lịch sử đặt hàng.
   @Test
   @CaseIds("TC-088")
   void cannotDeleteProductWithOrderHistory() {
@@ -23,6 +24,7 @@ class ProductServiceTests {
     verify(products, never()).deleteById(anyInt());
   }
 
+  // Kiểm tra cho xóa sản phẩm chưa có đơn hàng.
   @Test
   @CaseIds("TC-087")
   void deletesProductWithoutOrders() {
@@ -33,6 +35,7 @@ class ProductServiceTests {
     verify(products).deleteById(7);
   }
 
+  // Kiểm tra giá âm bị từ chối trước khi lưu database.
   @Test
   @CaseIds("TC-081")
   void rejectsNegativePriceBeforeDatabaseWrite() {

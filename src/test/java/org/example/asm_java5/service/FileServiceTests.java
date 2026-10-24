@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.io.TempDir;
 
 class FileServiceTests {
+  // Kiểm tra lưu ảnh hợp lệ trong tiến trình và thư mục tạm riêng.
   @Test @CaseIds({"TC-044","TC-085"})
   void savesValidImageInIsolatedProcess(@TempDir Path temp) throws Exception {
     String classpath=System.getProperty("surefire.test.class.path",System.getProperty("java.class.path"));
@@ -28,6 +29,7 @@ class FileServiceTests {
       try(var saved=Files.list(temp.resolve("uploads"))) {assertEquals(1,saved.count());}
     } finally {if(child.isAlive()) child.destroyForcibly();}
   }
+  // Kiểm tra từ chối file rỗng, giả ảnh hoặc quá 2 MB.
   @Test
   @CaseIds("TC-045")
   void rejectsEmptyFakeAndOversizedFiles() {
@@ -45,6 +47,7 @@ class FileServiceTests {
         () -> files.save(new MockMultipartFile("photo", new byte[2 * 1024 * 1024 + 1])));
   }
 
+  // Kiểm tra từ chối ảnh rộng hơn 5.000 pixel.
   @Test
   @CaseIds("TC-045")
   void rejectsImageWiderThanFiveThousandPixels() throws Exception {

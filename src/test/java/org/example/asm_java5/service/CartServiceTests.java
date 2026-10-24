@@ -17,6 +17,7 @@ class CartServiceTests {
   CartService cart;
   Product p;
 
+  // Tạo giỏ hàng mới, ProductService giả và sản phẩm mẫu trước mỗi test.
   @BeforeEach
   void setup() {
     products = mock(ProductService.class);
@@ -25,6 +26,7 @@ class CartServiceTests {
     when(products.findById(1)).thenReturn(Optional.of(p));
   }
 
+  // Kiểm tra thêm sản phẩm đang bán vào giỏ.
   @Test
   @Tag("smoke")
   @CaseIds("TC-012")
@@ -35,6 +37,7 @@ class CartServiceTests {
     assertEquals(1, cart.getItems().get(0).getProduct().getId());
   }
 
+  // Kiểm tra thêm trùng sản phẩm thì cộng dồn số lượng.
   @Test
   @CaseIds("TC-013")
   void mergeRepeatedProduct() {
@@ -44,6 +47,7 @@ class CartServiceTests {
     assertEquals(2, cart.getItems().get(0).getQuantity());
   }
 
+  // Kiểm tra tổng tiền tính đúng giảm giá và số lượng.
   @Test
   @CaseIds("TC-014")
   void totalUsesDiscountAndQuantity() {
@@ -55,6 +59,7 @@ class CartServiceTests {
     assertEquals(new BigDecimal("380000.00"), cart.getTotal());
   }
 
+  // Kiểm tra chấp nhận số lượng ở hai giới hạn hợp lệ.
   @ParameterizedTest
   @ValueSource(ints = {1, 99})
   @CaseIds("TC-015")
@@ -64,6 +69,7 @@ class CartServiceTests {
     assertEquals(quantity, cart.getItems().get(0).getQuantity());
   }
 
+  // Kiểm tra số lượng sai bị từ chối và không đổi giỏ hàng.
   @ParameterizedTest
   @ValueSource(ints = {0, -1, 100})
   @CaseIds("TC-016")
@@ -74,6 +80,7 @@ class CartServiceTests {
     assertEquals(2, cart.getItems().get(0).getQuantity());
   }
 
+  // Kiểm tra không cho tăng số lượng sản phẩm lên 100.
   @Test
   @CaseIds("TC-017")
   void rejectHundredthItem() {
@@ -83,6 +90,7 @@ class CartServiceTests {
     assertEquals(99, cart.getItems().get(0).getQuantity());
   }
 
+  // Kiểm tra không thêm sản phẩm không tồn tại hoặc ngừng bán.
   @Test
   @CaseIds("TC-018")
   void rejectMissingAndUnavailableProducts() {
@@ -92,6 +100,7 @@ class CartServiceTests {
     assertTrue(cart.getItems().isEmpty());
   }
 
+  // Kiểm tra không cập nhật sản phẩm chưa có trong giỏ.
   @Test
   @CaseIds("TC-019")
   void rejectUpdateAbsentProduct() {
@@ -99,6 +108,7 @@ class CartServiceTests {
     assertTrue(cart.getItems().isEmpty());
   }
 
+  // Kiểm tra xóa đúng dòng được chọn và giữ các dòng còn lại.
   @Test
   @CaseIds("TC-020")
   void removeOnlySelectedLine() {
@@ -111,6 +121,7 @@ class CartServiceTests {
     assertEquals(new BigDecimal("200000.00"), cart.getTotal());
   }
 
+  // Kiểm tra xóa giỏ nhiều lần vẫn giữ giỏ rỗng.
   @Test
   @CaseIds("TC-021")
   void clearIsIdempotent() {
@@ -121,6 +132,7 @@ class CartServiceTests {
     assertEquals(BigDecimal.ZERO, cart.getTotal());
   }
 
+  // Kiểm tra làm tròn đơn giá trước khi nhân số lượng.
   @Test
   @CaseIds("TC-023")
   void roundUnitPriceBeforeMultiplication() {

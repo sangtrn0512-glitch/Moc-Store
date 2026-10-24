@@ -17,6 +17,7 @@ class AuthServiceTests {
   AuthService auth;
   Account user;
 
+  // Tạo Repository giả, session mới và tài khoản mẫu trước mỗi test đăng nhập.
   @BeforeEach
   void setup() {
     accounts = mock(AccountRepository.class);
@@ -26,6 +27,7 @@ class AuthServiceTests {
     when(accounts.findById("qa")).thenReturn(Optional.of(user));
   }
 
+  // Kiểm tra đăng nhập lưu đúng tài khoản và dấu mật khẩu vào session.
   @Test
   @Tag("smoke")
   @CaseIds("TC-046")
@@ -36,6 +38,7 @@ class AuthServiceTests {
     assertSame(user, auth.current());
   }
 
+  // Kiểm tra sai mật khẩu hoặc chưa kích hoạt thì không đăng nhập được.
   @Test
   @CaseIds("TC-047")
   void wrongPasswordAndInactiveCannotLogin() {
@@ -45,6 +48,7 @@ class AuthServiceTests {
     assertNull(session.getAttribute("username"));
   }
 
+  // Kiểm tra đổi mật khẩu làm phiên đăng nhập cũ mất hiệu lực.
   @Test
   @CaseIds("TC-054")
   void changedHashRevokesExistingSession() {
@@ -54,6 +58,7 @@ class AuthServiceTests {
     assertNull(session.getAttribute("username"));
   }
 
+  // Kiểm tra khóa tài khoản làm phiên đăng nhập cũ mất hiệu lực.
   @Test
   @CaseIds("TC-098")
   void inactiveAccountRevokesExistingSession() {
@@ -62,6 +67,7 @@ class AuthServiceTests {
     assertNull(auth.current());
   }
 
+  // Kiểm tra đăng xuất hủy session.
   @Test
   @CaseIds("TC-053")
   void logoutInvalidatesSession() {

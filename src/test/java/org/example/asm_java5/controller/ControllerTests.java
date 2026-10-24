@@ -25,6 +25,7 @@ class ControllerTests {
   MailService mail;
   MockMvc mvc;
 
+  // Tạo các Service giả và MockMvc để gửi request kiểm tra Controller trước mỗi test.
   @BeforeEach
   void setup() {
     products = mock(ProductService.class);
@@ -55,6 +56,7 @@ class ControllerTests {
     return s;
   }
 
+  // Kiểm tra trang chủ nhận đủ ba nhóm sản phẩm.
   @Test
   @CaseIds("TC-001")
   void homeSuppliesThreeProductSections() throws Exception {
@@ -68,6 +70,7 @@ class ControllerTests {
     verify(products).findBestSellingProducts();
   }
 
+  // Kiểm tra lọc sản phẩm theo đúng mã danh mục.
   @Test
   @CaseIds("TC-004")
   void categoryFilterUsesRequestedId() throws Exception {
@@ -79,6 +82,7 @@ class ControllerTests {
         .andExpect(model().attribute("products", org.hamcrest.Matchers.hasSize(1)));
   }
 
+  // Kiểm tra khoảng giá không hợp lệ được báo lỗi.
   @Test
   @CaseIds("TC-007")
   void invalidPriceRangeShowsError() throws Exception {
@@ -88,6 +92,7 @@ class ControllerTests {
     verify(products, never()).findByPriceBetween(any(), any());
   }
 
+  // Kiểm tra sản phẩm liên quan không chứa chính sản phẩm đang xem.
   @Test
   @CaseIds("TC-009")
   void detailLoadsRelatedProductsWithoutSelf() throws Exception {
@@ -99,12 +104,14 @@ class ControllerTests {
     verify(products).findRelatedProducts(1, 7);
   }
 
+  // Kiểm tra chuyển hướng khi sản phẩm không tồn tại.
   @Test
   @CaseIds("TC-010")
   void missingProductRedirects() throws Exception {
     mvc.perform(get("/product/detail/999")).andExpect(redirectedUrl("/product/list"));
   }
 
+  // Kiểm tra giá sai định dạng bị từ chối với mã 400.
   @Test
   @CaseIds("TC-011")
   void malformedPriceIsBadRequest() throws Exception {
@@ -114,6 +121,7 @@ class ControllerTests {
         .andExpect(status().isBadRequest());
   }
 
+  // Kiểm tra khách chưa đăng nhập vẫn thêm giỏ được khi có CSRF hợp lệ.
   @Test
   @CaseIds("TC-012")
   void anonymousCartPostWithCsrfWorks() throws Exception {
@@ -122,6 +130,7 @@ class ControllerTests {
     verify(cart).add(1);
   }
 
+  // Kiểm tra thiếu CSRF thì không được thay đổi dữ liệu.
   @Test
   @CaseIds("TC-052")
   void missingCsrfPreventsMutation() throws Exception {
@@ -129,12 +138,14 @@ class ControllerTests {
     verifyNoInteractions(cart);
   }
 
+  // Kiểm tra khách được chuyển tới đăng nhập khi vào trang cần bảo vệ.
   @Test
   @CaseIds("TC-048")
   void guestProtectedPageRedirects() throws Exception {
     mvc.perform(get("/account/edit-profile")).andExpect(redirectedUrl("/auth/login"));
   }
 
+  // Kiểm tra khách không truy cập được trang quản trị.
   @Test
   @CaseIds("TC-050")
   void guestAdminRedirects() throws Exception {
@@ -142,6 +153,7 @@ class ControllerTests {
     verifyNoInteractions(categories);
   }
 
+  // Kiểm tra người dùng thường không được tạo danh mục quản trị.
   @Test
   @CaseIds("TC-051")
   void userCannotCreateAdminCategory() throws Exception {
@@ -155,6 +167,7 @@ class ControllerTests {
     verifyNoInteractions(categories);
   }
 
+  // Kiểm tra đăng nhập xong quay lại trang đã yêu cầu.
   @Test
   @CaseIds("TC-049")
   void loginReturnsToProtectedPage() throws Exception {
@@ -171,6 +184,7 @@ class ControllerTests {
     assertNull(session.getAttribute("returnUrl"));
   }
 
+  // Kiểm tra đăng ký trống bị báo lỗi và không lưu tài khoản.
   @Test
   @CaseIds("TC-025")
   void blankRegistrationCannotWrite() throws Exception {
@@ -187,6 +201,7 @@ class ControllerTests {
     verify(accounts, never()).register(any());
   }
 
+  // Kiểm tra trùng tên đăng nhập thì không lưu tài khoản mới.
   @Test
   @CaseIds("TC-026")
   void duplicateUsernameCannotWrite() throws Exception {
@@ -203,6 +218,7 @@ class ControllerTests {
     verify(accounts, never()).register(any());
   }
 
+  // Kiểm tra trùng tên danh mục thì không lưu danh mục mới.
   @Test
   @CaseIds("TC-071")
   void duplicateCategoryCannotWrite() throws Exception {
@@ -217,6 +233,7 @@ class ControllerTests {
     verify(categories, never()).save(any());
   }
 
+  // Kiểm tra sửa danh mục với tên quá dài bị từ chối.
   @Test
   @CaseIds("TC-073")
   void categoryUpdateRejectsLongName() throws Exception {

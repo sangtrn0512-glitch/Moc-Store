@@ -17,6 +17,7 @@ class ProductValidationTests {
   ProductService service;
   Product p;
 
+  // Tạo Repository giả, ProductService và sản phẩm mẫu trước mỗi test.
   @BeforeEach
   void setup() {
     repository = mock(ProductRepository.class);
@@ -24,6 +25,7 @@ class ProductValidationTests {
     p = product(1, "100000", "10");
   }
 
+  // Kiểm tra giá âm, quá lớn hoặc quá số chữ số thập phân bị từ chối.
   @ParameterizedTest
   @ValueSource(strings = {"-0.01", "100000000000000000.00", "1.001"})
   @CaseIds("TC-081")
@@ -33,6 +35,7 @@ class ProductValidationTests {
     verify(repository, never()).save(any());
   }
 
+  // Kiểm tra chấp nhận giá ở hai giới hạn hợp lệ.
   @ParameterizedTest
   @ValueSource(strings = {"0", "99999999999999999.99"})
   @CaseIds("TC-081")
@@ -42,6 +45,7 @@ class ProductValidationTests {
     verify(repository).save(p);
   }
 
+  // Kiểm tra giảm giá ngoài giới hạn hoặc quá số chữ số thập phân bị từ chối.
   @ParameterizedTest
   @ValueSource(strings = {"-0.01", "100.01", "1.001"})
   @CaseIds("TC-082")
@@ -51,6 +55,7 @@ class ProductValidationTests {
     verify(repository, never()).save(any());
   }
 
+  // Kiểm tra chấp nhận giảm giá 0% và 100%.
   @ParameterizedTest
   @ValueSource(strings = {"0", "100"})
   @CaseIds("TC-082")
@@ -60,6 +65,7 @@ class ProductValidationTests {
     verify(repository).save(p);
   }
 
+  // Kiểm tra giới hạn độ dài tên sản phẩm.
   @Test
   @CaseIds("TC-080")
   void nameBoundaries() {
@@ -72,6 +78,7 @@ class ProductValidationTests {
     verify(repository, times(1)).save(p);
   }
 
+  // Kiểm tra sản phẩm bắt buộc có danh mục.
   @Test
   @CaseIds("TC-083")
   void categoryRequired() {
@@ -80,6 +87,7 @@ class ProductValidationTests {
     verify(repository, never()).save(any());
   }
 
+  // Kiểm tra từ chối đường dẫn ảnh không hợp lệ.
   @ParameterizedTest
   @ValueSource(strings = {"../x.png", "a/b.png", "a\\b.png"})
   @CaseIds("TC-084")

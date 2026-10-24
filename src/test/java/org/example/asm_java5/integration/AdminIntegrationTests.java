@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 class AdminIntegrationTests extends DatabaseTestSupport {
   MockMvc mvc;
 
+  // Tạo MockMvc từ cấu hình Spring để gửi request trước mỗi test.
   @BeforeEach
   void mvc() {
     mvc = MockMvcBuilders.webAppContextSetup(context).build();
@@ -58,6 +59,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
         .param("admin", "false");
   }
 
+  // Kiểm tra admin tạo sản phẩm và đọc lại dữ liệu đã lưu.
   @Test
   @CaseIds("TC-078")
   void productCreateAndRead() throws Exception {
@@ -75,6 +77,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
         .andExpect(model().attributeExists("product"));
   }
 
+  // Kiểm tra sửa sản phẩm giữ nguyên mã và ngày tạo.
   @Test
   @CaseIds("TC-079")
   void productUpdateKeepsIdAndCreationDate() throws Exception {
@@ -86,6 +89,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertEquals(2, products.count());
   }
 
+  // Kiểm tra sản phẩm ngừng bán không được mua hoặc hiển thị trong danh sách bán.
   @Test
   @CaseIds("TC-086")
   void unavailableProductCannotBePurchasedOrListed() throws Exception {
@@ -105,6 +109,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertEquals(p2.getId(), ((Product) listed.get(0)).getId());
   }
 
+  // Kiểm tra xóa sản phẩm chưa được tham chiếu.
   @Test
   @CaseIds("TC-087")
   void deleteUnreferencedProduct() throws Exception {
@@ -114,6 +119,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertTrue(products.existsById(p2.getId()));
   }
 
+  // Kiểm tra chuyển hướng khi mã cần chỉnh sửa không tồn tại.
   @Test
   @CaseIds({"TC-077", "TC-089"})
   void missingEditIdsRedirect() throws Exception {
@@ -123,6 +129,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
         .andExpect(redirectedUrl("/admin/product/index"));
   }
 
+  // Kiểm tra admin tạo tài khoản đã kích hoạt với mật khẩu mã hóa.
   @Test
   @CaseIds("TC-090")
   void adminCreatesActiveUserWithHashedPassword() throws Exception {
@@ -136,6 +143,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
         .andExpect(status().isOk());
   }
 
+  // Kiểm tra admin sửa tài khoản không nhập mật khẩu thì giữ mật khẩu cũ.
   @Test
   @CaseIds("TC-091")
   void adminUpdateWithoutPasswordKeepsHash() throws Exception {
@@ -147,6 +155,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertEquals("Nguyễn QA sửa", a.getFullName());
   }
 
+  // Kiểm tra admin đổi mật khẩu tài khoản thành công.
   @Test
   @CaseIds("TC-092")
   void adminChangesPassword() throws Exception {
@@ -158,6 +167,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertFalse(new BCryptPasswordEncoder().matches("Test@1234", hash));
   }
 
+  // Kiểm tra admin tạo tài khoản sai dữ liệu thì không lưu.
   @Test
   @CaseIds("TC-093")
   void badAdminAccountCreationDoesNotPersist() throws Exception {
@@ -167,6 +177,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertEquals(before, accounts.count());
   }
 
+  // Kiểm tra admin không được tự hạ quyền.
   @Test
   @CaseIds("TC-094")
   void adminCannotDemoteSelf() throws Exception {
@@ -175,6 +186,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertTrue(accounts.findById(admin.getUsername()).orElseThrow().isAdmin());
   }
 
+  // Kiểm tra admin không được tự xóa tài khoản.
   @Test
   @CaseIds("TC-095")
   void adminCannotDeleteSelf() throws Exception {
@@ -183,6 +195,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertTrue(accounts.existsById(admin.getUsername()));
   }
 
+  // Kiểm tra xóa tài khoản chưa có đơn hàng.
   @Test
   @CaseIds("TC-096")
   void deleteUserWithoutOrders() throws Exception {
@@ -191,6 +204,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertFalse(accounts.existsById(other.getUsername()));
   }
 
+  // Kiểm tra admin tạo đơn và xem đúng chi tiết đơn.
   @Test
   @CaseIds("TC-099")
   void adminCreatesOrderAndReadsDetails() throws Exception {
@@ -211,6 +225,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
         .andExpect(status().isOk());
   }
 
+  // Kiểm tra admin tạo đơn với số lượng sai thì hoàn tác dữ liệu.
   @ParameterizedTest
   @ValueSource(ints = {0, 100})
   @CaseIds("TC-100")
@@ -227,6 +242,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertEquals(0, details.count());
   }
 
+  // Kiểm tra admin sửa đúng địa chỉ và trạng thái đơn.
   @Test
   @CaseIds("TC-101")
   void adminUpdatesOrderAddressAndStatus() throws Exception {
@@ -245,6 +261,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     money("90000", orderService.total(o.getId()));
   }
 
+  // Kiểm tra khóa sửa dòng hàng khi đơn không còn chờ xử lý.
   @ParameterizedTest
   @ValueSource(strings = {"CONFIRMED", "SHIPPING", "COMPLETED", "CANCELLED"})
   @CaseIds("TC-105")
@@ -260,6 +277,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertEquals(2, details.count());
   }
 
+  // Kiểm tra dòng hàng từ chối số lượng sai hoặc sản phẩm ngừng bán.
   @Test
   @CaseIds("TC-106")
   void orderLinesRejectInvalidQuantityAndUnavailableProduct() {
@@ -275,6 +293,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertEquals(1, details.count());
   }
 
+  // Kiểm tra không xóa nhầm dòng của đơn khác và xóa được dòng đúng đơn.
   @Test
   @CaseIds({"TC-107", "TC-108"})
   void removeLineRejectsOtherOrderThenRemovesOwnLine() {
@@ -321,6 +340,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     mvc.perform(get(path).session(session(user))).andExpect(status().isForbidden());
   }
 
+  // Kiểm tra request GET không được xóa sản phẩm hoặc xóa giỏ.
   @Test
   @CaseIds("TC-056")
   void getCannotDeleteProductOrClearCart() throws Exception {
@@ -330,6 +350,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
     assertTrue(products.existsById(p1.getId()));
   }
 
+  // Kiểm tra tìm kiếm không khớp hiển thị danh sách rỗng.
   @Test
   @CaseIds("TC-008")
   void emptySearchRendersEmptyResults() throws Exception {
@@ -338,6 +359,7 @@ class AdminIntegrationTests extends DatabaseTestSupport {
         .andExpect(model().attribute("products", org.hamcrest.Matchers.empty()));
   }
 
+  // Kiểm tra tạo danh mục từ chối tên dài hơn 100 ký tự.
   @Test
   @CaseIds("TC-074")
   void categoryCreateRejectsNameOverOneHundred() throws Exception {

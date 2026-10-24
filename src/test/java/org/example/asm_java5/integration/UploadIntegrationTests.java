@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 class UploadIntegrationTests extends DatabaseTestSupport {
   @MockitoBean FileService files;
   MockMvc mvc;
+  // Tạo MockMvc từ cấu hình Spring để gửi request trước mỗi test.
   @BeforeEach void mvc() {mvc=MockMvcBuilders.webAppContextSetup(context).build();}
   MockHttpSession session(Account a) {
     MockHttpSession s=new MockHttpSession(); s.setAttribute("csrf","token");
@@ -28,12 +29,14 @@ class UploadIntegrationTests extends DatabaseTestSupport {
     ByteArrayOutputStream bytes=new ByteArrayOutputStream(); ImageIO.write(new BufferedImage(100,100,BufferedImage.TYPE_INT_RGB),"png",bytes);
     return new MockMultipartFile(name,"qa.png","image/png",bytes.toByteArray());
   }
+  // Kiểm tra upload ảnh đại diện lưu đúng tên file do dịch vụ trả về.
   @Test @CaseIds("TC-044") void profileUploadSavesReturnedFilename() throws Exception {
     when(files.save(any())).thenReturn("qa-profile.png");
     mvc.perform(multipart("/account/photo").file(image("photo")).session(session(user)).param("csrf","token"))
         .andExpect(flash().attributeExists("success"));
     assertEquals("qa-profile.png",accounts.findById(user.getUsername()).orElseThrow().getPhoto()); verify(files).save(any());
   }
+  // Kiểm tra upload ảnh sản phẩm lưu đúng tên file do dịch vụ trả về.
   @Test @CaseIds("TC-085") void productUploadSavesReturnedFilename() throws Exception {
     when(files.save(any())).thenReturn("qa-product.png");
     mvc.perform(multipart("/admin/product/create").file(image("imageFile")).session(session(admin)).param("csrf","token")

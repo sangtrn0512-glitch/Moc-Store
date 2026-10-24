@@ -14,6 +14,7 @@ import org.springframework.test.context.ActiveProfiles;
 class AsmJava5ApplicationTests {
   @Autowired DataSource dataSource;
 
+  // Kiểm tra Spring khởi tạo được và dùng database H2.
   @Test
   @CaseIds("TC-122")
   void contextLoads() throws Exception {

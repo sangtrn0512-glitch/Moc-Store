@@ -39,6 +39,7 @@ public abstract class DatabaseTestSupport {
   protected Category c1, c2;
   protected Product p1, p2;
 
+  // Xóa dữ liệu H2 cũ và tạo lại tài khoản, danh mục, sản phẩm mẫu trước mỗi test.
   @BeforeEach
   public void resetTestDatabase() throws Exception {
     try (var connection = dataSource.getConnection()) {

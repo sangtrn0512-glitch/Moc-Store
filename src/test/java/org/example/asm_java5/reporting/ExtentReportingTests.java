@@ -11,6 +11,7 @@ import org.junit.platform.launcher.core.*;
 import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
 
 class ExtentReportingTests {
+  // Kiểm tra báo cáo ghi đúng trạng thái test và đính kèm ảnh sau khi dọn dẹp.
   @Test void recordsRealJunitOutcomesAndScreenshotsAfterTeardown(@TempDir Path temporary) throws Exception {
     String previous = System.getProperty("extent.report.directory");
     SummaryGeneratingListener listener = new SummaryGeneratingListener();

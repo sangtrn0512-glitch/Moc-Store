@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 class AccountIntegrationTests extends DatabaseTestSupport {
   MockMvc mvc;
 
+  // Tạo MockMvc từ cấu hình Spring để gửi request trước mỗi test.
   @BeforeEach
   void mvc() {
     mvc = MockMvcBuilders.webAppContextSetup(context).build();
@@ -33,6 +34,7 @@ class AccountIntegrationTests extends DatabaseTestSupport {
     return s;
   }
 
+  // Kiểm tra lỗi gửi email vẫn giữ tài khoản chưa kích hoạt và báo lỗi.
   @Test
   @CaseIds("TC-033")
   void smtpFailureKeepsInactiveAccountAndShowsError() throws Exception {
@@ -52,6 +54,7 @@ class AccountIntegrationTests extends DatabaseTestSupport {
     assertFalse(accounts.findById("qa_new").orElseThrow().isActivated());
   }
 
+  // Kiểm tra sửa hồ sơ không làm đổi quyền và trạng thái kích hoạt.
   @Test
   @CaseIds("TC-034")
   void updateProfilePreservesRoleAndActivation() throws Exception {
@@ -69,6 +72,7 @@ class AccountIntegrationTests extends DatabaseTestSupport {
     verifyNoInteractions(mail);
   }
 
+  // Kiểm tra đổi email yêu cầu kích hoạt lại và hủy phiên đăng nhập.
   @Test
   @CaseIds("TC-035")
   void newEmailRequiresReactivationAndRevokesSession() throws Exception {
@@ -90,6 +94,7 @@ class AccountIntegrationTests extends DatabaseTestSupport {
     assertTrue(accounts.findById(user.getUsername()).orElseThrow().isActivated());
   }
 
+  // Kiểm tra hồ sơ không hợp lệ không được lưu.
   @Test
   @CaseIds("TC-036")
   void invalidProfileDoesNotWrite() throws Exception {
@@ -104,6 +109,7 @@ class AccountIntegrationTests extends DatabaseTestSupport {
         user.getFullName(), accounts.findById(user.getUsername()).orElseThrow().getFullName());
   }
 
+  // Kiểm tra xác nhận mật khẩu sai thì không đổi mật khẩu.
   @Test
   @CaseIds("TC-038")
   void passwordConfirmationMismatchDoesNotChangeHash() throws Exception {
@@ -119,6 +125,7 @@ class AccountIntegrationTests extends DatabaseTestSupport {
     assertEquals(hash, accounts.findById(user.getUsername()).orElseThrow().getPassword());
   }
 
+  // Kiểm tra xác nhận đặt lại sai thì giữ nguyên token và mật khẩu.
   @Test
   @CaseIds("TC-043")
   void resetConfirmationMismatchPreservesTokenAndPassword() throws Exception {
@@ -137,6 +144,7 @@ class AccountIntegrationTests extends DatabaseTestSupport {
     assertEquals(token, saved.getResetToken());
   }
 
+  // Kiểm tra token kích hoạt và đặt lại mật khẩu không dùng lại được.
   @Test
   @CaseIds({"TC-031", "TC-042"})
   void activationAndResetTokensCannotBeReused() {
@@ -155,6 +163,7 @@ class AccountIntegrationTests extends DatabaseTestSupport {
                 "Reset@123", accounts.findById(user.getUsername()).orElseThrow().getPassword()));
   }
 
+  // Kiểm tra giới hạn độ dài email có cú pháp hợp lệ.
   @Test
   @CaseIds("TC-028")
   void emailLengthBoundaryWithValidSyntax() {

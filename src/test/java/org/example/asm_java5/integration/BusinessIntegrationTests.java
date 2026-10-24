@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 class BusinessIntegrationTests extends DatabaseTestSupport {
   MockMvc mvc;
 
+  // Tạo MockMvc từ cấu hình Spring để gửi request trước mỗi test.
   @BeforeEach
   void mvc() {
     mvc = MockMvcBuilders.webAppContextSetup(context).build();
@@ -34,6 +35,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
     return s;
   }
 
+  // Kiểm tra đặt hàng lưu đúng đơn, chi tiết và tổng tiền vào database.
   @Test
   @Tag("smoke")
   @CaseIds("TC-057")
@@ -49,6 +51,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
     money("380000", orderService.total(o.getId()));
   }
 
+  // Kiểm tra đặt hàng lỗi thì hoàn tác cả đơn và chi tiết đã lưu.
   @Test
   @CaseIds("TC-064")
   void checkoutRollsBackHeaderAndEarlierLines() {
@@ -63,6 +66,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
     assertEquals(0, details.count());
   }
 
+  // Kiểm tra gửi lặp cùng mã đặt hàng chỉ tạo một đơn.
   @Test
   @CaseIds("TC-065")
   void checkoutKeyCanOnlyCreateOneOrder() throws Exception {
@@ -87,6 +91,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
         .andExpect(model().attribute("items", org.hamcrest.Matchers.empty()));
   }
 
+  // Kiểm tra mã đặt hàng sai không tạo đơn và không làm mất giỏ.
   @Test
   @CaseIds("TC-066")
   void wrongCheckoutKeyDoesNotLoseCart() throws Exception {
@@ -106,6 +111,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
         .andExpect(model().attribute("items", org.hamcrest.Matchers.hasSize(1)));
   }
 
+  // Kiểm tra hai session có hai giỏ hàng riêng biệt.
   @Test
   @CaseIds("TC-022")
   void cartIsActuallySessionScoped() throws Exception {
@@ -132,6 +138,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
         p2.getId(), ((org.example.asm_java5.model.CartItem) itemsB.get(0)).getProduct().getId());
   }
 
+  // Kiểm tra quyền sở hữu đơn và xử lý mã đơn không tồn tại.
   @Test
   @CaseIds("TC-055")
   void orderOwnershipAndMissingId() throws Exception {
@@ -142,6 +149,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
         .andExpect(status().isNotFound());
   }
 
+  // Kiểm tra lịch sử đúng người mua và danh sách đã mua chỉ chứa đơn hoàn tất.
   @Test
   @CaseIds({"TC-067", "TC-068"})
   void historiesOnlyContainOwnersAndCompletedPurchases() {
@@ -154,6 +162,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
     assertEquals(p1.getId(), purchased.get(0).getProduct().getId());
   }
 
+  // Kiểm tra đơn cũ giữ nguyên giá dù giá sản phẩm thay đổi.
   @Test
   @CaseIds("TC-069")
   void orderPricesRemainHistorical() {
@@ -163,6 +172,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
     money("180000", orderService.total(o.getId()));
   }
 
+  // Kiểm tra doanh thu theo danh mục chỉ tính đơn hoàn tất.
   @Test
   @CaseIds({"TC-111", "TC-112", "TC-113"})
   void revenueAggregatesOnlyCompletedByCategory() {
@@ -187,6 +197,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
             < 0);
   }
 
+  // Kiểm tra danh sách VIP lấy đúng 10 khách hàng đứng đầu.
   @Test
   @CaseIds("TC-114")
   void vipReturnsExactlyTopTen() {
@@ -200,6 +211,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
     assertEquals("vip02", rows.get(9).get("username"));
   }
 
+  // Kiểm tra tổng tiền và ngày mua của VIP không tính đơn chờ xử lý.
   @Test
   @CaseIds("TC-115")
   void vipTotalAndDatesIgnorePending() {
@@ -214,6 +226,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
     assertEquals(last, ((java.sql.Timestamp) row.get("lastDate")).toLocalDateTime());
   }
 
+  // Kiểm tra VIP đồng hạng sắp theo tên đăng nhập và không thêm dòng giả.
   @Test
   @CaseIds("TC-116")
   void vipTieBreaksByUsernameAndDoesNotPadRows() {
@@ -224,6 +237,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
     assertEquals("qa_other", rows.get(0).get("username"));
   }
 
+  // Kiểm tra báo cáo rỗng khi chưa có đơn hoàn tất.
   @Test
   @CaseIds("TC-117")
   void reportsEmptyWithoutCompletedOrders() {
@@ -231,6 +245,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
     assertTrue(reports.vip().isEmpty());
   }
 
+  // Kiểm tra bán chạy bỏ qua đơn chờ xử lý và sản phẩm ngừng bán.
   @Test
   @CaseIds("TC-003")
   void bestSellersIgnorePendingAndUnavailable() {
@@ -246,6 +261,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
         productService.findBestSellingProducts().stream().map(Product::getId).toList());
   }
 
+  // Kiểm tra lọc giá bao gồm cả hai đầu khoảng giá.
   @Test
   @CaseIds({"TC-005", "TC-006"})
   void priceFilterIncludesBothBoundaries() {
@@ -262,6 +278,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
             .size());
   }
 
+  // Kiểm tra top 4 giảm giá bỏ qua sản phẩm ngừng bán hoặc không giảm.
   @Test
   @CaseIds("TC-002")
   void discountTopFourExcludeUnavailableAndZero() {
@@ -276,6 +293,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
             .toList());
   }
 
+  // Kiểm tra sản phẩm mới sắp theo ngày rồi theo mã.
   @Test
   @CaseIds("TC-001")
   void newProductsUseDateThenId() {
@@ -291,6 +309,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
         ids.subList(0, 4), productService.findNewProducts().stream().map(Product::getId).toList());
   }
 
+  // Kiểm tra chặn xóa dữ liệu đang được bản ghi khác tham chiếu.
   @Test
   @CaseIds({"TC-076", "TC-088", "TC-097"})
   void relatedRecordsCannotBeDeleted() throws Exception {
@@ -306,6 +325,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
     assertTrue(products.existsById(p1.getId()));
   }
 
+  // Kiểm tra xóa đơn chờ xử lý hoặc đã hủy cũng xóa chi tiết.
   @Test
   @CaseIds("TC-109")
   void deletePendingAndCancelledRemovesDetails() {
@@ -319,6 +339,7 @@ class BusinessIntegrationTests extends DatabaseTestSupport {
     assertEquals(0, details.count());
   }
 
+  // Kiểm tra lưu cùng sản phẩm gộp dòng và tính lại tổng tiền.
   @Test
   @CaseIds("TC-104")
   void saveItemMergesProductLineAndRecalculatesTotal() {

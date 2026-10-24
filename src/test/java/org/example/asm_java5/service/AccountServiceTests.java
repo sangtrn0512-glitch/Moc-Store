@@ -18,6 +18,7 @@ class AccountServiceTests {
   AccountRepository repository;
   AccountService service;
 
+  // Tạo Repository giả và AccountService mới trước mỗi test.
   @BeforeEach
   void setup() {
     repository = mock(AccountRepository.class);
@@ -25,6 +26,7 @@ class AccountServiceTests {
     lenient().when(repository.save(any())).thenAnswer(i -> i.getArgument(0));
   }
 
+  // Kiểm tra đăng ký mã hóa mật khẩu và yêu cầu kích hoạt.
   @Test
   @Tag("smoke")
   @CaseIds("TC-024")
@@ -43,6 +45,7 @@ class AccountServiceTests {
     verify(repository).save(a);
   }
 
+  // Kiểm tra email sai định dạng bị từ chối.
   @ParameterizedTest
   @ValueSource(strings = {"abc", "a@b", "a b@c.com"})
   @CaseIds("TC-027")
@@ -53,6 +56,7 @@ class AccountServiceTests {
     verify(repository, never()).save(any());
   }
 
+  // Kiểm tra email đã tồn tại bị từ chối.
   @Test
   @CaseIds("TC-026")
   void rejectDuplicateEmail() {
@@ -62,6 +66,7 @@ class AccountServiceTests {
     verify(repository, never()).save(any());
   }
 
+  // Kiểm tra giới hạn độ dài tên đăng nhập và họ tên.
   @ParameterizedTest
   @CsvSource({"50,100,true", "51,100,false", "50,101,false"})
   @CaseIds("TC-028")
@@ -76,6 +81,7 @@ class AccountServiceTests {
     }
   }
 
+  // Kiểm tra mật khẩu quá ngắn hoặc chỉ có khoảng trắng bị từ chối.
   @ParameterizedTest
   @ValueSource(strings = {"1234567", "        "})
   @CaseIds("TC-029")
@@ -83,6 +89,7 @@ class AccountServiceTests {
     assertThrows(IllegalArgumentException.class, () -> service.checkPassword(password));
   }
 
+  // Kiểm tra giới hạn số byte của mật khẩu khi mã hóa.
   @Test
   @CaseIds("TC-029")
   void passwordByteBoundaries() {
@@ -93,6 +100,7 @@ class AccountServiceTests {
     assertThrows(IllegalArgumentException.class, () -> service.checkPassword("á".repeat(37)));
   }
 
+  // Kiểm tra token hợp lệ kích hoạt tài khoản và bị xóa sau khi dùng.
   @Test
   @CaseIds("TC-030")
   void activateValidTokenAndConsumeIt() {
@@ -108,6 +116,7 @@ class AccountServiceTests {
     verify(repository).save(a);
   }
 
+  // Kiểm tra token kích hoạt không tồn tại hoặc hết hạn bị từ chối.
   @Test
   @CaseIds("TC-031")
   void rejectMissingAndExpiredActivation() {
@@ -121,6 +130,7 @@ class AccountServiceTests {
     verify(repository, never()).save(any());
   }
 
+  // Kiểm tra gửi lại kích hoạt tạo token thay thế token cũ.
   @Test
   @CaseIds("TC-032")
   void resendReplacesActivationToken() {
@@ -133,6 +143,7 @@ class AccountServiceTests {
     assertTrue(a.getActivationExpiresAt().isAfter(LocalDateTime.now().plusHours(23)));
   }
 
+  // Kiểm tra đổi mật khẩu đồng thời xóa token đặt lại mật khẩu.
   @Test
   @CaseIds("TC-037")
   void changePasswordClearsResetToken() {
@@ -144,6 +155,7 @@ class AccountServiceTests {
     verify(repository).save(a);
   }
 
+  // Kiểm tra mật khẩu cũ sai thì không lưu thay đổi.
   @Test
   @CaseIds("TC-038")
   void wrongOldPasswordDoesNotWrite() {
@@ -155,6 +167,7 @@ class AccountServiceTests {
     verify(repository, never()).save(any());
   }
 
+  // Kiểm tra token đặt lại mật khẩu hết hạn sau 30 phút.
   @Test
   @CaseIds("TC-039")
   void prepareResetExpiresInThirtyMinutes() {
@@ -166,6 +179,7 @@ class AccountServiceTests {
     assertTrue(a.getResetExpiresAt().isBefore(LocalDateTime.now().plusMinutes(31)));
   }
 
+  // Kiểm tra tài khoản không tồn tại hoặc chưa kích hoạt không được đặt lại mật khẩu.
   @Test
   @CaseIds("TC-040")
   void unknownOrInactiveAccountCannotReset() {
@@ -177,6 +191,7 @@ class AccountServiceTests {
     verify(repository, never()).save(any());
   }
 
+  // Kiểm tra đặt lại mật khẩu đổi bản mã và xóa token đã dùng.
   @Test
   @CaseIds("TC-041")
   void resetConsumesTokenAndChangesHash() {
@@ -190,6 +205,7 @@ class AccountServiceTests {
     assertTrue(new BCryptPasswordEncoder().matches("Reset@123", a.getPassword()));
   }
 
+  // Kiểm tra token đặt lại mật khẩu sai hoặc hết hạn bị từ chối.
   @Test
   @CaseIds("TC-042")
   void rejectExpiredOrInvalidReset() {

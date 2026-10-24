@@ -22,6 +22,7 @@ class OrderServiceTests {
   ProductRepository products;
   OrderService service;
 
+  // Tạo các Repository giả và OrderService mới trước mỗi test.
   @BeforeEach
   void setup() {
     orders = mock(OrderRepository.class);
@@ -30,6 +31,7 @@ class OrderServiceTests {
     service = new OrderService(orders, details, products);
   }
 
+  // Kiểm tra giỏ rỗng không tạo được đơn hàng.
   @Test
   @CaseIds("TC-058")
   void emptyCartCannotCreateOrder() {
@@ -39,6 +41,7 @@ class OrderServiceTests {
     verify(orders, never()).save(any());
   }
 
+  // Kiểm tra chấp nhận địa chỉ ở giới hạn độ dài hợp lệ.
   @ParameterizedTest
   @ValueSource(ints = {1, 500})
   @CaseIds("TC-059")
@@ -46,6 +49,7 @@ class OrderServiceTests {
     assertDoesNotThrow(() -> service.validateAddress("a".repeat(length), "0901234567"));
   }
 
+  // Kiểm tra địa chỉ rỗng hoặc chỉ có khoảng trắng bị từ chối.
   @ParameterizedTest
   @ValueSource(strings = {"", "   "})
   @CaseIds("TC-060")
@@ -54,6 +58,7 @@ class OrderServiceTests {
         IllegalArgumentException.class, () -> service.validateAddress(address, "0901234567"));
   }
 
+  // Kiểm tra địa chỉ quá dài bị từ chối.
   @Test
   @CaseIds("TC-060")
   void tooLongAddress() {
@@ -62,6 +67,7 @@ class OrderServiceTests {
         () -> service.validateAddress("a".repeat(501), "0901234567"));
   }
 
+  // Kiểm tra chấp nhận các số điện thoại hợp lệ.
   @ParameterizedTest
   @ValueSource(strings = {"12345678", "12345678901234567890", "+84 (90)-1234567"})
   @CaseIds("TC-061")
@@ -69,6 +75,7 @@ class OrderServiceTests {
     assertDoesNotThrow(() -> service.validateAddress("12 Lê Lợi", phone));
   }
 
+  // Kiểm tra từ chối số điện thoại sai định dạng hoặc độ dài.
   @ParameterizedTest
   @ValueSource(strings = {"1234567", "123456789012345678901", "090abc1234"})
   @CaseIds("TC-062")
@@ -76,6 +83,7 @@ class OrderServiceTests {
     assertThrows(IllegalArgumentException.class, () -> service.validateAddress("12 Lê Lợi", phone));
   }
 
+  // Kiểm tra đặt hàng lấy lại giá hiện tại từ database.
   @Test
   @CaseIds("TC-063")
   void checkoutRefreshesPriceFromDatabase() {
@@ -90,6 +98,7 @@ class OrderServiceTests {
     assertEquals(2, saved.getValue().getQuantity());
   }
 
+  // Kiểm tra trạng thái đơn hàng không hợp lệ bị từ chối.
   @Test
   @CaseIds("TC-102")
   void rejectUnknownStatus() {
@@ -99,6 +108,7 @@ class OrderServiceTests {
     verify(orders, never()).save(any());
   }
 
+  // Kiểm tra đơn hoàn tất hoặc đã hủy không được mở lại.
   @ParameterizedTest
   @ValueSource(strings = {"COMPLETED", "CANCELLED"})
   @CaseIds("TC-103")
@@ -113,6 +123,7 @@ class OrderServiceTests {
     verify(orders, never()).save(any());
   }
 
+  // Kiểm tra không xóa đơn đang xử lý hoặc đã hoàn tất.
   @ParameterizedTest
   @ValueSource(strings = {"CONFIRMED", "SHIPPING", "COMPLETED"})
   @CaseIds("TC-110")
@@ -124,6 +135,7 @@ class OrderServiceTests {
     verify(orders, never()).delete(any());
   }
 
+  // Kiểm tra không xóa dòng sản phẩm cuối cùng của đơn.
   @Test
   @CaseIds("TC-108")
   void cannotRemoveFinalLine() {
