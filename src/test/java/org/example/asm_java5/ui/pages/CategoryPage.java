@@ -22,7 +22,7 @@ public class CategoryPage extends BasePage {
 
   // Bấm sửa danh mục theo mã và chờ trang chỉnh sửa.
   public void edit(int id) {
-    driver.findElement(By.cssSelector("a[href='/admin/category/edit/" + id + "']")).click();
+    click(By.cssSelector("a[href='/admin/category/edit/" + id + "']"));
     wait.until(ExpectedConditions.urlToBe(baseUrl + "/admin/category/edit/" + id));
   }
 
@@ -40,9 +40,8 @@ public class CategoryPage extends BasePage {
   // Bấm xóa danh mục, xác nhận hộp thoại và chờ tải lại trang.
   public void delete(int id) {
     WebElement button =
-        driver.findElement(
+        click(
             By.cssSelector("form[action='/admin/category/delete/" + id + "'] button"));
-    button.click();
     wait.until(ExpectedConditions.alertIsPresent()).accept();
     wait.until(ExpectedConditions.stalenessOf(button));
   }

@@ -22,11 +22,26 @@ public abstract class BasePage {
     field.sendKeys(value);
   }
 
+  // Cuộn tức thì tới nút và chờ bấm được bằng Selenium.
+  protected WebElement click(By locator) {
+    return wait.until(browser -> {
+      try {
+        WebElement element = browser.findElement(locator);
+        if (!element.isDisplayed() || !element.isEnabled()) return null;
+        ((JavascriptExecutor) browser).executeScript(
+            "arguments[0].scrollIntoView({behavior:'instant',block:'center',inline:'center'});",
+            element);
+        element.click();
+        return element;
+      } catch (ElementClickInterceptedException | StaleElementReferenceException e) {
+        return null;
+      }
+    });
+  }
+
   // Bấm gửi form và chờ nút ở trang cũ mất hiệu lực.
   protected void submit(String selector) {
-    WebElement button =
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(selector)));
-    button.click();
+    WebElement button = click(By.cssSelector(selector));
     wait.until(ignored -> {
       try {
         button.isEnabled();
